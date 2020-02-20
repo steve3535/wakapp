@@ -67,14 +67,14 @@ fi
 
 printf "%-36s%s" " . Checking repositories " "$TIRET "
 ok=1
-#for repo in rhel-7-server-beta-rpms rhel-7-server-extras-rpms rhel-7-server-optional-rpms rhel-7-server-optional-beta-rpms;do
- #subscription-manager repos --list-enabled | grep "$repo" &>../logs/configure.log
- #if [ "$?" -ne 0 ];then
-  #printf "${RED}%s${NC}\n" "REPO "$repo" is not enabled"
-  #ok=0
-  #exit 1
- #fi
-#done
+for repo in rhel-7-server-beta-rpms rhel-7-server-extras-rpms rhel-7-server-optional-rpms rhel-7-server-optional-beta-rpms;do
+ subscription-manager repos --list-enabled | grep "$repo" &>../logs/configure.log
+ if [ "$?" -ne 0 ];then
+  printf "${RED}%s${NC}\n" "REPO "$repo" is not enabled"
+  ok=0
+  exit 1
+ fi
+done
 
 if [ "$ok" -eq 1 ];then
   printf "${GREEN}%s${NC}\n" "OK"
@@ -183,27 +183,27 @@ read -p "   Setup will use the values $wakapp_srv_hostname and $wakapp_srv_ip. C
          ;;
   esac
 
-#read -p " . Path to the base RHEL 6 iso: " base6
+read -p " . Path to the base RHEL 6 iso: " base6
 #MOUNT RHEL BASE ISOs
-#while [ ! -f "$base6" ];do
-# printf "${RED} %s\n${NC}" "  Invalid Path"
-# read -p " . Path to the base RHEL 6 iso: " base6
-#done
+while [ ! -f "$base6" ];do
+ printf "${RED} %s\n${NC}" "  Invalid Path"
+ read -p " . Path to the base RHEL 6 iso: " base6
+done
 
-#read -p " . Path to the base RHEL 7 iso: " base7
-#while [ ! -f "$base7" ];do
-# printf "${RED} %s\n${NC}" "  Invalid Path"
-# read -p " . Path to the base RHEL 7 iso: " base7
-#done
+read -p " . Path to the base RHEL 7 iso: " base7
+while [ ! -f "$base7" ];do
+ printf "${RED} %s\n${NC}" "  Invalid Path"
+ read -p " . Path to the base RHEL 7 iso: " base7
+done
 
-#printf "%-36s%s" " . Mount RHEL Base OS isos " "$TIRET "
-#ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>../logs/configure.log
-#if [ "$?" -eq 0 ];then
-#  printf "${GREEN}%s${NC}\n" "OK"
-#else
-#  printf "${RED} %s\n${NC}" "  An error occured while mounting base OS isos"
-#  exit 1
-#fi
+printf "%-36s%s" " . Mount RHEL Base OS isos " "$TIRET "
+ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>../logs/configure.log
+if [ "$?" -eq 0 ];then
+  printf "${GREEN}%s${NC}\n" "OK"
+else
+  printf "${RED} %s\n${NC}" "  An error occured while mounting base OS isos"
+  exit 1
+fi
 
 
 printf "%-36s%s" " . Build binaries " "$TIRET "
