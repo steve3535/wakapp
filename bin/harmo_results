@@ -1,0 +1,52 @@
+#!/bin/bash
+ RED='\033[0;91m'
+ NC='\033[0m' # No Color
+ GREEN='\033[0;32m'
+ YELLOW='\033[0;93m'
+ B_WHITE='\033[0;37m'
+ B_RED='\033[1;91m'
+ BLUE='\033[0;94m'
+
+GROUP="$1"
+echo
+echo  -e "${YELLOW}[*] Harmonizing results files ...${NC}"
+
+if [ -d "$HOME/scan_results/rh7/$GROUP" ]; then
+	cd "$HOME"/scan_results/rh7/"$GROUP" || exit
+	if ls ./resultat*txt 1>/dev/null 2>&1; then
+		#awk '{if (!a[$0]i++) print}' ./resultat*txt >"$GROUP"_final
+                cat resultat*.txt | sort -u > "$GROUP"_final.txt 
+		tempfile=$(mktemp)
+		echo -e "${BLUE}[-] Pass 1 ...${NC}"
+		sudo repoquery -R --resolve --recursive --qf="%{name}" $(cat "$GROUP"_final.txt) 2>/dev/null | tee -a "$tempfile"
+                echo -e "${BLUE}[-] Pass 2 ...${NC}"
+		sudo yumdownloader --resolve $(cat "$GROUP"_final.txt)  --urls 2>/dev/null | egrep "installed|updated" | cut -d" " -f3 | cut -d"." -f1 | tee -a "$tempfile"
+                echo -e "${GREEN}[+] Sorting ...${NC}"
+		sort -u "$tempfile" > "$GROUP"_pkgs.txt
+                #tr '\n' ',' < "$GROUP"_pkgs.txt > "$GROUP"_lpkgs.txt
+		#echo "bc" >>  "$GROUP"_lpkgs.txt
+	else
+		echo "No RHEL 7 report files found for $GROUP ."
+		exit 2
+	fi
+fi
+
+if [ -d "/home/wakausr/scan_results/rh6/$GROUP" ]; then
+	cd /home/wakausr/scan_results/rh6/"$GROUP" || exit
+	if ls ./resultat*txt 1>/dev/null 2>&1; then
+		awk '{if (!a[$0]++) print}' ./resultat*txt >"$GROUP"_final
+                cat repoq*.txt  >"$GROUP"_deplist
+                cat "$GROUP"_deplist "$GROUP"_final | sort -u > "$GROUP"_repoq
+
+                for j in `cat "$GROUP"_final`;do
+                  printf "$j," >> "$GROUP"_rpms
+                  printf "telnet" >> "$GROUP"_rpms
+                done
+
+	else
+		echo "No RHEL 6 report files found for $GROUP ."
+		exit 2
+	fi
+fi
+
+

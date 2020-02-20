@@ -1,0 +1,81 @@
+#!/bin/bash
+RED='\033[0;31m'       
+NC='\033[0m' # No Color
+GREEN='\033[0;32m'     
+YELLOW='\033[0;93m'    
+
+ if [[ $# -eq 0 ]]; then
+    #echo "Syntax ERROR !"                                       
+    exit 1
+  else
+    for f in $*
+      do
+        if [[ $f == [A-Za-z]* ]]; then
+          echo                                                      
+          #echo "Search for group $f ... "                        
+          if [ ! -f "/home/wakausr/inventory/$f" ]; then
+            echo "Group $f not found.  "                             
+          else
+            list=`~/discovery_hosts $f -l` #search=("${search[@]}" "$f")
+            for i in $list
+              do
+                   echo
+                   echo "+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>+"
+                   echo -e "${YELLOW}|    Vulnerability CVEs list for $i   |${NC}"
+                   echo "+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+                   echo
+                   ssh $i curl -s file:///home/wakausr/report.html | grep -C3 -i true 2>&1 >/dev/null
+                   ret=$?
+                   if [[ $ret -ne 0 ]]; then
+                      echo
+                      echo "There is currently no CVE detected on this system"
+                      echo
+                      continue;
+                   else
+                      echo
+                      echo "list of CVEs is being generated to scan_results/cvelist_$i.txt. Please wait ..."
+                      echo
+                      ssh $i curl -s file:///home/wakausr/report.html | grep -C3 -i true | grep -o 'CVE-[[:digit:]]\{4\}-[[:digit:]]\{4\}*' | uniq | rhsecapi --stdin --all-fields | tee /home/wakausr/scan_results/cvelist_$i.txt
+                      sleep 1
+                      echo
+                      read -n 1 -s -r -p "Press any key to continue"
+                   fi
+              done 
+          fi
+
+        else if [[ $f == [1-9]* ]]; then
+              echo                                                      
+              #echo "Search for IP $f ... "                           
+              grep -qwR "$f" /home/wakausr/inventory
+              if [[ $? -ne 0 ]];then
+               echo "$f is not a registered IP address. "              
+              else
+                echo
+                   echo "+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>+"
+                   echo -e "${YELLOW}|    Vulnerability CVEs list for $f   |${NC}"
+                   echo "+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+                   echo
+                   ssh $f curl -s file:///home/wakausr/report.html | grep -C3 -i true 2>&1 >/dev/null
+                   ret=$?
+                   if [[ $ret -ne 0 ]]; then
+                      echo
+                      echo "There is currently no CVE detected on this system"
+                      echo
+                      continue;
+                   else
+                      echo
+                      echo "list of CVEs is being generated to scan_results/cvelist_$f.txt. Please wait ..."
+                      echo
+                      ssh $f curl -s file:///home/wakausr/report.html | grep -C3 -i true | grep -o 'CVE-[[:digit:]]\{4\}-[[:digit:]]\{4\}*' | uniq | rhsecapi --stdin --all-fields | tee /home/wakausr/scan_results/cvelist_$f.txt
+                      sleep 1
+                      echo
+                      read -n 1 -s -r -p "Press any key to continue"
+
+                   fi
+              fi
+       fi
+    fi
+      done
+
+fi
+

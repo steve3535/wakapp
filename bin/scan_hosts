@@ -1,0 +1,76 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: "{{ HOSTS }}"
+  #become: true
+  tasks:
+  - block:
+    - name: check setup flag file
+      stat:
+        path: /etc/ansible/facts.d/setuphost.fact
+      register: setup_flag_file
+    - name: check setup_flag
+      command: echo  "{{ ansible_local.setuphost.waka_setuphost }}"
+      register: setup_flag
+      when: setup_flag_file.stat.exists == true
+
+  - block:
+    - name: Scanning ...
+      shell: /home/wakausr/parse_rhsa6
+      register: _scanel6
+      async: 1800
+      poll: 0
+
+    - name: Wait for scan to finish
+      async_status:
+        jid: "{{ _scanel6.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 20  # Check every 5 seconds.
+      retries: 30  # Retry up to 10 times. 
+
+    - name: Saving scan results ...
+      delegate_to: localhost
+      file:
+        path: "/home/wakausr/scan_results/rh6/{{ HOSTS }}"
+        state: directory
+        owner: wakausr
+    - name: fetching ...
+      fetch: 
+       src: "{{ item }}"
+       dest: "/home/wakausr/scan_results/rh6/{{ HOSTS }}/"
+       flat: yes
+      with_items:
+      - "/home/wakausr/resultat-{{ ansible_hostname }}.txt"
+      - "/home/wakausr/vstats-{{ ansible_hostname }}.txt" 
+    when:  ansible_distribution_major_version== "6" and setup_flag_file.stat.exists == true and setup_flag.stdout == "1"
+
+  - block: 
+    - name: Scanning ...
+      shell: /home/wakausr/parse_rhsa7
+      register: _scanel7
+      async: 1800
+      poll: 0
+    - name: Wait for scan to finish
+      async_status:
+        jid: "{{ _scanel7.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 20  # Check every 5 seconds.
+      retries: 30
+    - name: Saving scan results ...
+      delegate_to: localhost
+      file:
+        path: "/home/wakausr/scan_results/rh7/{{ HOSTS }}"
+        state: directory
+        owner: wakausr
+    - name: fetching ...
+      fetch:
+       src: "{{ item }}"
+       dest: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/"
+       flat: yes
+      with_items:
+      - "/home/wakausr/resultat-{{ ansible_hostname }}.txt"
+      - "/home/wakausr/vstats-{{ ansible_hostname }}.txt"
+    when:  ansible_distribution_major_version== "7" and setup_flag_file.stat.exists and setup_flag.stdout == "1"
+...
+

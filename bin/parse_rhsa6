@@ -1,0 +1,75 @@
+#!/bin/bash
+
+FILE1=./result-ov0.txt
+FILE2=./result-ov1.txt
+FILE3=./resultat-$(hostname | cut -d. -f1).txt
+FILE4=./result-ovdep.txt
+FILE5=./result-ovdep-final.txt
+FILE6=./repoq-$(hostname | cut -d. -f1).txt
+STATS_FILE=./vstats-$(hostname | cut -d. -f1).txt
+OVAL_DEF_FILE=./Red_Hat_Enterprise_Linux_6.xml #wget https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_6.xml
+hn=$(hostname)
+date_scan=$(date "+%Y-%m-%d")
+if [ -f $FILE2 ]; then
+	cat /dev/null >$FILE2
+fi
+
+if [ -f $FILE4 ]; then
+	cat /dev/null >$FILE4
+fi
+
+echo "Scanning - Phase 1 ..."
+
+rhsa_raw=$(oscap oval eval --results results.xml --report report.html $OVAL_DEF_FILE | grep true | cut -f4 -d:)
+grep "$rhsa_raw" ./results.xml | grep criterion | grep true | tr -s ' ' >>$FILE4
+oscap oval eval --results results.xml --report report.html $OVAL_DEF_FILE | grep true | cut -f4 -d: | sed -e 's/^/RHSA-/' >$FILE1
+
+echo "Scanning - Phase 2 ..."
+IFS=$' \t\n'
+while read -r line; do
+	echo "${line:0:9}:${line:9}" >>$FILE2
+done <$FILE1
+
+crit=0
+imp=0
+mod=0
+low=0
+while read -r line; do
+	c=$(grep "$line" ./results.xml | grep -ci critical)
+	crit=$((crit + c))
+	i=$(grep "$line" ./results.xml | grep -ci important)
+	imp=$((imp + i))
+	m=$(grep "$line" ./results.xml | grep -ci moderate)
+	mod=$((mod + m))
+	l=$(grep "$line" ./results.xml | grep -ci low)
+	low=$((low + l))
+done <$FILE2
+#echo $crit Critical $imp Important  $mod Moderate $low Low
+echo "$date_scan|$hn|$crit|$imp|$mod|$low" > "$STATS_FILE"
+#mysql -ulautus -hLAUTUS_DB -plautus lautus_db -e "update hosts set critical='$crit', important='$imp', moderate='$mod', low='$low', date_scan='$date_scan' where hostname='$hn';"
+
+if [ -f "$FILE3" ]; then
+	cat /dev/null >"$FILE3"
+fi
+
+echo "Scanning - Phase 3 ..."
+while read -r rhsa; do
+	echo -n "$rhsa " >>"$FILE3"
+	grep -E "$rhsa" "$OVAL_DEF_FILE" | grep "<title>" | tr -s ' ' | cut -f3 -d" " | sort -u >>"$FILE3"
+done <$FILE2
+
+if [ -f $FILE5 ]; then
+	cat /dev/null >$FILE5
+fi
+sleep 2
+echo "Scanning dependencies ..."
+for i in $(while read -r line; do echo "${line:46:11}"; done <$FILE4); do
+	grep "$i" results.xml | grep criterion | grep earlier | cut -f4 -d"\"" | awk '{ print $1 }' | sort -u >>$FILE5
+done
+
+< "$FILE5" sort -u >"$FILE3"
+
+sudo yum --disablerepo=* --enablerepo=wrepo*6 makecache fast
+#sudo repoquery --enablerepo=wrepo*6 -C -R --resolve --recursive `cat "$FILE3"` | sort -u | tee "$FILE6"
+sudo repoquery --enablerepo=wrepo*6 -C -R --resolve --recursive --qf="%{name}" `cat "$FILE3"` | sort -u | tee "$FILE6"
+

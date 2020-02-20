@@ -1,0 +1,47 @@
+#!/bin/bash
+
+printf "+--------------------+--------------------+--------------------+-------------------------------+\n"
+printf "%-21s%-21s%-21s%-21s%-21s\n" "|  IP address" "|  Critical" "|  Important" "|  Moderate" "| Low "
+printf "+--------------------+--------------------+--------------------+-------------------------------+\n"
+
+
+  if [[ $# -eq 0 ]]; then
+    #echo "Syntax ERROR !"                                       
+    exit 1
+  else
+    for f in $*
+      do
+        if [[ $f == [A-Za-z]* ]]; then
+          echo                                                      
+          #echo "Search for group $f ... "                        
+          if [ ! -f "/home/wakausr/inventory/$f" ]; then
+            echo "Group $f not found.  "                             
+          else
+            list=`~/discovery_hosts $f -l` #search=("${search[@]}" "$f")
+            for i in $list
+              do
+                 while read -a row
+                  do
+                    printf "%-21s\e[31m%-21s\e[33m%-21s\e[32m%-21s\e[39m%-21s\n" "   ${row[0]}" "   ${row[1]}" "   ${row[2]}" "   ${row[3]}" "   ${row[4]}"
+                  done < <(echo "select ipv4_address,critical,important,moderate,low from hosts where ipv4_address='$i';" | mysql -N -h'127.0.0.1' -uwakausr -pwakausr wakausr_db)
+              done
+          fi
+
+        else if [[ $f == [1-9]* ]]; then
+              echo                                                      
+              #echo "Search for IP $f ... "                           
+              grep -qR "$f" /home/wakausr/inventory
+              if [[ $? -ne 0 ]];then
+               echo "$f is not a registered IP address. "              
+              else
+                while read -a row
+                 do
+                   printf "%-21s\e[31m%-21s\e[33m%-21s\e[32m%-21s\e[39m%-21s\n" "   ${row[0]}" "   ${row[1]}" "   ${row[2]}" "   ${row[3]}" "   ${row[4]}"
+                 done < <(echo "select ipv4_address,critical,important,moderate,low from hosts where ipv4_address='$f';" | mysql -N -h'127.0.0.1' -uwakausr -pwakausr wakausr_db)
+              fi
+        fi
+    fi
+      done
+  fi
+
+

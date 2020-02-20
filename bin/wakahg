@@ -1,0 +1,337 @@
+#!/bin/bash
+
+  RED='\033[0;31m'
+  NC='\033[0m' # No Color
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;93m'
+  B_WHITE='\033[0;37m'
+
+  bar() {
+    local w=80 p=$1;  shift
+    # create a string of spaces, then change them to dots
+    printff -v dots "%*s" "$(( $p*$w/100 ))" ""; dots=${dots// /.};
+    # printf those dots on a fixed-width space plus the percentage etc.
+    printff "\r\e[K|%-*s| %3d %% %s" "$w" "$dots" "$p" "$*";
+  }
+
+  client_pkg_test() {
+    host="$1"
+    nc -z -w10 "$1" 22 >/dev/null 2>&1
+    ret="$?"
+    [[ "$ret" -ne 0 ]] && return 125 #host unreachable
+    ssh -o PasswordAuthentication=no -o StrictHostKeyChecking=no "$host" hostname >/dev/null 2>&1
+    ret="$?"
+    return "$ret" 
+  }
+
+  check() {
+  #check existence of a group
+    GRP_NAME="$1"
+    HOSTFILE=$HOME/inventory/"$GRP_NAME"
+    if [ -f "$HOSTFILE" ]; then
+      return 0
+    else
+      return 1
+    fi
+  }
+
+  verifygroup() {
+  #run prereq test against a group
+    GRP_NAME="$1"
+    HOSTFILE=$HOME/inventory/"$GRP_NAME"
+    check "$GRP_NAME"
+    if [[ "$?" -ne 0 ]];then
+      echo "Group not found"
+      return 1
+    else
+    for i in `cat "$HOSTFILE" | grep -v "^\["`;do
+      client_pkg_test "$i"
+      case "$?" in
+      0) printf "%-32s${GREEN}%-32s${NC}\n" "$i ........." "OK"
+         ;;
+    125) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "connection timeout/host unreachable"
+         ok=$(( ok - 1 ))
+         ;;
+    255) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "authentication failure"
+         ok=$(( ok - 1 ))
+         ;;
+      esac
+
+    done  
+    fi
+  }    
+  
+  showgroup() {
+  #display details of a group
+ 
+    GRP_NAME="$1"
+    HOSTFILE=$HOME/inventory/"$GRP_NAME"
+    if [ ! -f "$HOSTFILE" ]; then
+      echo "Group not found"
+      return 1
+    fi
+    
+    echo -e "\n${B_WHITE}$GRP_NAME${NC} : \n"
+    
+    n_hosts=`cat "$HOSTFILE" | grep -v "^\[" | wc -l`
+    if [ "$n_hosts" -eq 0 ];then
+      echo -e "no associated host(s)\n"
+    else
+      for i in `cat "$HOSTFILE" | grep -v "^\["`;do
+        echo $i
+      done
+      echo
+    fi 
+  
+  }
+
+  newgroup() {
+ 
+    GRP_NAME="$1"
+    HOSTFILE=$HOME/inventory/"$GRP_NAME"
+    if [ -f "$HOSTFILE" ]; then
+      echo
+      echo -e "${RED}error:${NC} the specified group already exists"
+
+      #IFS="" read -r -p  "The specified group already exists. Rediscover ? (Y/N) " choice
+
+      showgroup "$1"
+      
+      return 1
+    fi
+          
+    n_ip=$(($#-1))
+    ok="$n_ip"
+    touch "$HOSTFILE"
+    echo "[$GRP_NAME]" >>"$HOSTFILE"
+    for i in "${@:2}"; do
+      client_pkg_test "$i"
+      case "$?" in
+        0) printf "%-32s${GREEN}%-32s${NC}\n" "$i ........." "OK"
+           echo "$i" >> "$HOSTFILE"
+           ;;
+      125) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "connection timeout/host unreachable"
+           ok=$(( ok - 1 ))
+           sed -i "/$i/d" "$HOSTFILE"
+           ;;
+      255) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "authentication failure"
+           ok=$(( ok - 1 ))
+           sed -i "/$i/d" "$HOSTFILE"
+           ;;
+      esac
+    done
+     
+    if [ "$ok" -eq "$n_ip" ];then
+        #ALL IS OK
+      echo -e "${GREEN}\nsuccess:${NC} group registered\n"
+    elif [ "$ok" -eq 0 ];then
+        #NONE IS OK
+      echo -e "\n${RED}error:${NC} cannot register the group due to connection erros with specified associated host(s)\n"
+      rm -f "$HOSTFILE"
+    else
+        #PARTIALLY OK
+      echo -e "\nthe group was partially registered due to failures with some of the associated host(s)\n" 
+    fi
+  
+ }  
+
+  editgroup() {
+    GRP_NAME="$1"
+    HOSTFILE=$HOME/inventory/"$GRP_NAME"
+    check "$GRP_NAME"
+    
+    if [[ "$?" -ne 0 ]];then
+      echo "error: group not found"
+      return 1
+    else
+      OPTION="$2"
+      case "$OPTION" in
+      --add-host|-a)
+                 if [ -z "$3" ];then
+                   echo "error: you must specify at least one host to add"
+                   return 1
+                 fi
+                 for i in "${@:3}";do
+                   ok=1
+                   for j in `grep -Ev "^\[" "$HOSTFILE"`;do
+                     if [[ "$i" == "$j" ]];then
+                       ok=0
+                       echo "$i" already belongs to group "$GRP_NAME"
+                     fi
+                    done
+                    if [[ "$ok" -eq 1 ]];then 
+                       echo "Adding $i ..."
+                       
+                       client_pkg_test "$i"
+                       case "$?" in
+                         0) printf "%-32s${GREEN}%-32s${NC}\n" "$i ........." "OK"
+                            echo "$i" >> "$HOSTFILE"
+                            ;;
+                       125) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "connection timeout/host unreachable"
+                            ;;
+                       255) printf "${RED}%-32s${NC}%-32s\n" "$i ........." "authentication failure"
+                            ;;
+                        esac
+                    fi
+                 done
+               ;;
+
+      --remove-host|-r)
+                 if [ -z "$3" ];then
+                   echo "error: you must specify at least one host to remove"
+                   return 1
+                 fi
+
+                 for i in "${@:3}";do
+	           "$HOME"/bin/redis-bash-cli del "$GRP_NAME":"$i" 2>/dev/null
+                   rm -f "$HOME"/scan_results/*/"$GRP_NAME"/resultat-"$i".txt 2>/dev/null		   
+                   sed -i "/$i/d" "$HOSTFILE" && echo -e "\n$i has been removed from the $GRP_NAME group\n"
+                 done
+               ;;
+      *) echo "error: invalid/missing option"
+               ;;
+      esac
+    fi 
+ }
+  
+  renamegroup(){
+  
+  check "$1"
+  if [[ "$?" -ne 0 ]];then
+    echo "$1 : error: group not found"
+  else
+    sed -i "s/$1/$2/g" "/home/wakausr/inventory/$1" &&  mv "/home/wakausr/inventory/$1" "/home/wakausr/inventory/$2"
+  fi
+  
+  }
+
+  delgroup(){
+    
+      IFS="" read -r -p  "The specified group(s) will be deleted. Continue ? (Y/N) " choice   
+      case "$choice" in
+      Y|y) 
+          for i in "${@}";do
+            check "$i" 
+             if [[ "$?" -ne 0 ]];then
+               echo "error: $i : group not found"     
+             else 
+                GRP_NAME="$i"
+                HOSTFILE=$HOME/inventory/"$GRP_NAME" 
+                rm -f "$HOSTFILE"
+		rm -rf "$HOME"/scan_results/*/"$GRP_NAME" 2>/dev/null
+                
+		$HOME/bin/redis-bash-cli del $($HOME/bin/redis-bash-cli keys \* | grep "$GRP_NAME") &>/dev/null
+                echo -e "${YELLOW}==> Group $i deleted${NC}"
+             fi
+           done
+           ;;
+       N|n) echo -e "${YELLOW}operation cancelled${NC}"
+            ;;
+       esac
+        
+                
+ }
+ 
+ setupgroup(){
+  
+  for i in "${@}";do
+    check "$i"
+    if [[ "$?" -eq 0 ]];then
+      list+="$i "
+    else 
+      echo "error: $i : group not found"
+    fi
+  done
+  HOSTGR=$(echo "${list// /,}")
+  "$HOME"/bin/setup_hosts -e HOSTS="$HOSTGR"  
+
+ }
+
+ scangroup(){
+  echo
+  echo -e "${B_WHITE}SCANNING ...${NC}"
+  echo
+  for i in "${@}"; do
+    check "$i"
+    if [[ "$?" -ne 0 ]];then
+      echo -e "error: ${RED}$i${NC} : group not found"
+      echo
+    else
+      echo -e "${YELLOW}WARNING ${NC}Hosts within the group that were not setup will be skipped. To setup, run : waka hostgroup setup [GROUPNAME]"
+      $HOME/scan_hosts -e HOSTS="$i" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/harmo_results "$i" && echo "Logging stats ..." && $HOME/log_stats >/dev/null 2>&1
+      $HOME/pull_stats "$i"
+    fi
+  done
+    
+ }
+
+ patchgroup(){
+   check "$1"
+   if [[ "$?" -ne 0 ]];then
+     echo "error: $1 : group not found"
+     exit 1
+   else
+     nth=50
+     group="$1"
+     echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
+     $HOME/fetch_pkgs "$group" "$nth"
+     sleep 5
+     $HOME/monitor_main_queue
+     sleep 3
+     echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
+     $HOME/update_hosts -e HOSTS="$group"
+   fi
+   echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
+   echo -e "\n${B_RED}[!] RESTART OF THE HOSTS IS REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"
+   exit 0
+ }
+
+
+  N_ARGS="$#"
+
+  case "$N_ARGS" in
+
+  1) if [ "$1" != "list" ];then
+       echo "error: invalid/missing option"
+       echo
+     else
+       echo
+       echo -e "List of groups of hosts \n------------------------${B_WHITE}"
+       find $HOME/inventory/ -print | xargs -n 1 basename | grep -Evw "app_proxy|inventory" 2>/dev/null
+       echo -e ${NC}
+     fi
+     ;;
+  *) case "$1" in
+     "new")
+           newgroup "${@:2}"
+           ;;
+     "show") 
+           showgroup "$2"
+           ;;
+     "edit") 
+           editgroup "$2" "$3" "${@:4}"
+           ;;
+     "ping")
+           verifygroup "$2"
+           ;;
+     "del")
+           delgroup "${@:2}"
+           ;;
+     "rename")
+           renamegroup "$2" "$3"
+           ;;
+     "setup")
+           setupgroup "${@:2}"
+           ;;
+     "scan")
+           scangroup "${@:2}"
+           ;;
+     "patch")
+           patchgroup "$2"
+           ;;
+     
+     esac
+     ;;
+
+  esac
+

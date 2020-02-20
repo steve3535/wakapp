@@ -1,0 +1,32 @@
+#!/bin/bash
+  RED='\033[0;91m'
+  NC='\033[0m' # No Color
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;93m'
+  B_WHITE='\033[0;37m'
+  B_RED='\033[1;91m'
+  BLUE='\033[0;94m'
+
+echo $(date) >> $HOME/fetch_main.log
+group="$1"
+#Generate messages
+echo -e "${GREEN}[*] Generating messages ...${NC}"
+split -l 5 $HOME/scan_results/rh7/"$group"/"$group"_pkgs.txt $HOME/messages/"$group"_ 
+
+#Start task                             
+$HOME/redis-bash-cli set task_flag 1
+echo -e "${GREEN}[-] Submitting tasks ...${NC}"
+for req in $(ls $HOME/messages/"$group"_*);do  
+  python $HOME/new_task.py $(cat "$req") | tee -a $HOME/fetch_main.log 
+done                                    
+$HOME/redis-bash-cli set task_flag 0
+sleep 5
+
+#Start N workers
+echo -e "${GREEN}[-] Starting workers ...${NC}"
+nw="$2"
+for i in $(seq 1 $nw);do
+  python $HOME/worker.py & 
+done
+
+

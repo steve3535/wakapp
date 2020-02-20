@@ -1,0 +1,55 @@
+#!/bin/bash
+  RED='\033[0;91m'
+  NC='\033[0m' # No Color
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;93m'
+  B_WHITE='\033[0;37m'
+  B_RED='\033[1;91m'
+  BLUE='\033[0;94m'
+
+
+if [ "$#" -eq 0 ];then
+
+echo
+echo -e "${B_WHITE} VULNERABILITIES SCAN REPORT SUMMARY${NC}"
+echo
+
+printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
+printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" "|  Group" "|  Host" "|" "  Critical" "|" "  Important" "|" "  Moderate" "|" "  Low               " 
+printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
+
+
+for i in `$HOME/redis-bash-cli keys \* | cut -d: -f1,2|sort -u`;do 
+    group=`echo $i|cut -d: -f1`
+    host=`echo $i|cut -d: -f2`
+    crit=$($HOME/redis-bash-cli hget "$group":"$host" crit)
+    imp=$($HOME/redis-bash-cli hget "$group":"$host" imp)
+    mod=$($HOME/redis-bash-cli hget "$group":"$host" mod)
+    low=$($HOME/redis-bash-cli hget "$group":"$host" low)
+    printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" " $group" " $host" "" "   $crit" "" "   $imp" "" "   $mod" "" "   $low"
+done
+echo
+else 
+
+group="$1"
+
+echo
+echo -e "${B_WHITE} $group Group Vulnerabilities Scan Report Summary${NC}"
+echo
+
+printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
+printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" "|  Group" "|  Host" "|" "  Critical" "|" "  Important" "|" "  Moderate" "|" "  Low               "
+printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
+
+for i in `$HOME/redis-bash-cli keys $group\* | cut -d: -f1,2|sort -u`;do 
+    
+    host=`echo $i|cut -d: -f2`
+    crit=$($HOME/redis-bash-cli hget "$group":"$host" crit)
+    imp=$($HOME/redis-bash-cli hget "$group":"$host" imp)
+    mod=$($HOME/redis-bash-cli hget "$group":"$host" mod)
+    low=$($HOME/redis-bash-cli hget "$group":"$host" low)
+    printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" " $group" " $host" "" "   $crit" "" "   $imp" "" "   $mod" "" "   $low"
+done
+echo
+fi
+

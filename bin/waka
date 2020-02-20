@@ -1,0 +1,45 @@
+#!/bin/bash
+
+  N_ARGS="$#"
+
+  case $N_ARGS in
+  0) echo 
+     echo "too few arguments."
+     echo "usage: waka hostgroup|scan_summary|scan_details   del|edit|list|new|patch|ping|rename|scan|setup|show   [HOSTGROUP_NAME [OPTIONS]]"
+     echo
+     ;;
+  
+  
+
+  *) case "$1" in
+     "hostgroup") #call the hostgroup script with all arguments starting from the 3rd
+                  $HOME/bin/wakahg "${@:2}"
+                  ;;
+     "host")      #call the host script
+                  #./wakahs
+                  ;;
+     "scan_summary")
+                    if [ "$#" -lt 2 ];then
+                     $HOME/bin/pull_stats
+                    else
+                    case "$2" in 
+                    "all") $HOME/bin/pull_stats
+                          ;;
+                    *) $HOME/bin/pull_stats "$2"
+                          ;;
+                    esac
+                    fi
+                  ;;
+      "scan_details")
+                   if [ "$#" -lt 2 ];then
+                     echo "error: invalid/missing argument: specify a host"
+                   else
+                      $HOME/bin/pull_scan_details "$2"
+                   fi
+                   ;;
+
+     *)           echo "error: unknown command"
+                  ;;
+     esac
+     ;;
+  esac

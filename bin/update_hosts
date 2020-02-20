@@ -1,0 +1,23 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: "{{ HOSTS }}"
+  become: true
+  tasks:
+  - name: Capture current software versions to /var/log/before_patch_list
+    shell: rpm -qa > /var/log/rpmlist_$(date +"%Y%m%d")
+  - block:
+    - name: Patching ... Please wait ... ( check yupdate.log & yum.log under /var/log on the client to monitor the progress of the task )
+      shell: /home/wakausr/yupdate
+      register: _update7
+      async: 3600
+      poll: 0
+    - name: Wait for update to finish
+      async_status:
+        jid: "{{ _update7.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 60 #check every minute
+      retries: 60
+
+    when: ansible_distribution_major_version== "7"
+...

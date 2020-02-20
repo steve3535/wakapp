@@ -1,0 +1,68 @@
+#!/bin/bash
+  RED='\033[0;91m'
+  NC='\033[0m' # No Color
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;93m'
+  B_WHITE='\033[0;37m'
+  B_RED='\033[1;91m'
+  BLUE='\033[0;94m'
+#clear
+echo -e "${GREEN}[*] Polling ...${NC}"                                                                                    
+while true;do                                                                                            
+  flag=$("$HOME"/redis-bash-cli get task_flag)
+  if [[ "$flag" -eq 1 ]];then                                                                       
+    continue                                                                                             
+  else
+    sleep 5                                                                                                
+    noack=$(curl -s -u guest:guest http://localhost:15672/api/queues/%2f/yum | jq .messages)             
+    
+    #echo -e "${YELLOW}[*] Processing Queue ... ${NC}batches pending : ${RED}"
+    echo "Downloading ..."
+    echo "Remaining groups of packages:"
+    while [[ "$noack" -ne 0 ]];do #Waiting for message delivery                                          
+      sleep 1
+      if [[ "$noack" -gt 30 ]];then
+        echo -e "${RED}"	      
+        #tput cup 1 45
+        printf "\n%-2s ..." "$noack"
+      elif [[ "$noack" -gt 10 ]];then	
+	echo -e "${YELLOW}" 
+        printf "\n%-2s ..." "$noack"
+      else
+	echo -e "${GREEN}"
+        printf "\n%-2s ..." "$noack"
+      fi
+
+      noack=$(curl -s -u guest:guest http://localhost:15672/api/queues/%2f/yum | jq .messages)                                                                                                 
+    done                  
+                                                                                                         
+    echo -e "${NC}"         
+    echo                                                                                        
+    echo -e "${GREEN}[+] Download complete.${NC}"                                                                            
+
+    #Check channels (connections) of the main queue consumers                                            
+    echo -e "${BLUE}[-] Checking for orphan workers ...${NC}"                                                               
+    curl -s -u guest:guest http://localhost:15672/api/queues/%2f/yum | jq .consumer_details[].channel_details.connection_name | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g' > "$HOME"/worker_main_id
+
+    #retrieve rabbitmq ip add                                                                            
+    echo -e "${BLUE}[-] Retrieving Queue IP ...${NC}"                                                                       
+    rabbit_ip=$(docker inspect rabbitmq | jq '.[].NetworkSettings.IPAddress' | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g')
+
+    #close the sockets to kill the workers(consumers)                                                    
+
+    echo -e "${GREEN}[*] Closing channels ...${NC}"                                                                        
+    while read line;do
+      echo "Socket shutdown ..." >> "$HOME"/fetch_main.log 2>&1
+      docker run docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line"
+      done < "$HOME"/worker_main_id
+    echo         
+    echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
+    sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7
+    sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream6
+    echo -e "${YELLOW}[x] Remove incompatiple platforms ...${NC}" 
+    sudo rm -f /var/cache/yum/x86_64/7Server/stream6/*el7*.rpm   
+    sudo rm -f /var/cache/yum/x86_64/7Server/stream7/*el6*.rpm   
+    exit
+  fi
+done
+

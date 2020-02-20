@@ -1,0 +1,79 @@
+#!/bin/bash
+
+echo "Cleaning up ..."
+
+rm -f $HOME/*.txt $HOME/results.xml $HOME/report.html 2>/dev/null
+
+FILE1=$HOME/result-ov0.txt
+FILE2=$HOME/result-ov1.txt
+FILE3=$HOME/resultat-$(hostname | cut -d. -f1).txt
+FILE4=$HOME/result-ovdep.txt
+FILE5=$HOME/result-ovdep-final.txt
+STATS_FILE=$HOME/vstats-$(hostname | cut -d. -f1).txt
+FILE6=$HOME/resultat-$(hostname | cut -d. -f1)-stream.txt
+OVAL_DEF_FILE=$HOME/Red_Hat_Enterprise_Linux_7.xml #wget https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_7.xml
+hn=$(hostname)
+date_scan=$(date "+%Y-%m-%d")
+
+echo "Scanning - Phase 1 ..."
+
+rhsa_raw=$(oscap oval eval --results results.xml --report report.html $OVAL_DEF_FILE | grep true | cut -f4 -d:)
+grep "$rhsa_raw" $HOME/results.xml | grep criterion | grep true | tr -s ' ' >>$FILE4
+oscap oval eval --results results.xml --report report.html $OVAL_DEF_FILE | grep true | cut -f4 -d: | sed -e 's/^/RHSA-/' >$FILE1
+
+echo "Scanning - Phase 2 ..."
+IFS=$' \t\n'
+while read -r line; do
+	echo "${line:0:9}:${line:9}" >>$FILE2
+done <$FILE1
+
+crit=0
+imp=0
+mod=0
+low=0
+while read -r line; do
+	c=$(grep "$line" $HOME/results.xml | grep -ci critical)
+	crit=$((crit + c))
+	i=$(grep "$line" $HOME/results.xml | grep -ci important)
+	imp=$((imp + i))
+	m=$(grep "$line" $HOME/results.xml | grep -ci moderate)
+	mod=$((mod + m))
+	l=$(grep "$line" $HOME/results.xml | grep -ci low)
+	low=$((low + l))
+done <$FILE2
+#echo $crit Critical $imp Important  $mod Moderate $low Low
+echo "$date_scan|$hn|$crit|$imp|$mod|$low" > "$STATS_FILE"
+#mysql -ulautus -hLAUTUS_DB -plautus lautus_db -e "update hosts set critical='$crit', important='$imp', moderate='$mod', low='$low', date_scan='$date_scan' where hostname='$hn';"
+
+if [ -f "$FILE3" ]; then
+	cat /dev/null >"$FILE3"
+fi
+
+echo "Scanning - Phase 3 ..."
+while read -r rhsa; do
+	echo -n "$rhsa " >>"$FILE3"
+	grep -E "$rhsa" "$OVAL_DEF_FILE" | grep "<title>" | tr -s ' ' | cut -f3 -d" " | sort -u >>"$FILE3"
+done <$FILE2
+
+if [ -f $FILE5 ]; then
+	cat /dev/null >$FILE5
+fi
+sleep 2
+echo "Resolving dependencies ..."
+for i in $(while read -r line; do echo "${line:46:11}"; done <$FILE4); do
+	grep "$i" results.xml | grep criterion | grep earlier | cut -f4 -d"\"" | awk '{ print $1 }' | sort -u >>$FILE5
+done
+
+< "$FILE5" sort -u >"$FILE3"
+
+tr '\n' ',' < "$FILE3" > "$FILE6"
+echo "bc" >>  "$FILE6"
+
+echo "Generating update script ..."
+cat /dev/null > $HOME/yupdate
+echo "#!/bin/bash" >> $HOME/yupdate
+echo "sudo yum --enablerepo=wrepo*7 clean all | tee yupdate.log" >> $HOME/yupdate
+echo "sudo yum --enablerepo=wrepo*7 repolist all | tee -a yupdate.log" >> $HOME/yupdate
+echo "sudo yum --disablerepo=* --enablerepo=wrepo*7 -y update \$(cat resultat-$(hostname | cut -d. -f1).txt) | tee -a yupdate.log" >> $HOME/yupdate
+chmod +x $HOME/yupdate
+
