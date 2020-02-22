@@ -1,7 +1,22 @@
 #!/usr/bin/env ansible-playbook
 ---
+- hosts: localhost
+  tasks:
+  - name: refresh definition file for v7
+    get_url:
+       url: https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_7.xml
+       dest: /var/cache/yum/x86_64/7Server/stream7/
+       validate_certs: no
+  - name: refresh definition file for v6
+    get_url:
+       url: https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_6.xml
+       dest: /var/cache/yum/x86_64/7Server/stream6/
+       validate_certs: no
+
 - hosts: "{{ HOSTS }}"
   become: true
+  vars:
+  - ROOT: /home/wakausr/bin
   tasks:
   - block:
     - name: Update /etc/hosts file
@@ -34,12 +49,12 @@
         owner: wakausr
     - name: copy parsing code
       copy:
-        src: /home/wakausr/parse_rhsa7
+        src: "{{ ROOT }}/parse_rhsa7"
         dest: /home/wakausr/parse_rhsa7
         mode: 0755
     - name: Copy compliance code
       copy:
-        src: "{{ item }}"
+        src: "{{ ROOT }}/{{ item }}"
         dest: "/home/wakausr/{{ item }}"
         mode: 0755
       with_items:
@@ -60,12 +75,12 @@
         owner: wakausr
     - name: copy parsing code
       copy:
-        src: /home/wakausr/parse_rhsa6
+        src: "{{ ROOT }}/parse_rhsa6"
         dest: /home/wakausr/parse_rhsa6
         mode: 0755
     - name: copy compliance code
       copy:
-        src: "{{ item }}"
+        src: "{{ ROOT }}/{{ item }}"
         dest: "/home/wakausr/{{ item }}"
         mode: 0755
       with_items:

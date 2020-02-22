@@ -12,13 +12,13 @@ ok: [localhost] => (item=scan_results)
 ok: [localhost] => (item=messages)
 
 TASK [copy files to wakausr home directory] *********************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [copy files to wakausr home directory] *********************************************************************************************************************************
 changed: [localhost]
 
 PLAY RECAP ******************************************************************************************************************************************************************
-localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -66,16 +66,16 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [create redis container] ***********************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [create nginx containers] **********************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [create rabbitmq containers] *******************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 PLAY RECAP ******************************************************************************************************************************************************************
-localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'

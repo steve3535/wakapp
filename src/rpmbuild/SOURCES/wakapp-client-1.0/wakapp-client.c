@@ -16,9 +16,10 @@
       system("chown -R wakausr.wakausr /home/wakausr/.ssh &&  chmod 700 /home/wakausr/.ssh && restorecon -FR /home/wakausr/.ssh");
     } 
 
-    ret=system("grep '^wakausr' /etc/sudoers 2>&1>/dev/null");
-    if (ret == 0)  system("sed -i 's/wakausr.*//g' /etc/sudoers 2>&1>/dev/null && echo 'wakausr ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers");
-    else system("cp /etc/sudoers /etc/sudoers.bak-$(date '+%Y%m%d') &&  echo 'wakausr ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers");
+    system("echo 'wakausr ALL=(ALL) NOPASSWD:ALL' >/etc/sudoers.d/wakausr");
+    //ret=system("grep '^wakausr' /etc/sudoers 2>&1>/dev/null");
+    //if (ret == 0)  system("sed -i 's/wakausr.*//g' /etc/sudoers 2>&1>/dev/null && echo 'wakausr ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers");
+    //else system("cp /etc/sudoers /etc/sudoers.bak-$(date '+%Y%m%d') &&  echo 'wakausr ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers");
 
   }
 

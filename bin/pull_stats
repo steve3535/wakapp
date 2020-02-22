@@ -19,13 +19,13 @@ printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${
 printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
 
 
-for i in `$HOME/redis-bash-cli keys \* | cut -d: -f1,2|sort -u`;do 
+for i in `$HOME/bin/redis-bash-cli keys \* | cut -d: -f1,2|sort -u`;do 
     group=`echo $i|cut -d: -f1`
     host=`echo $i|cut -d: -f2`
-    crit=$($HOME/redis-bash-cli hget "$group":"$host" crit)
-    imp=$($HOME/redis-bash-cli hget "$group":"$host" imp)
-    mod=$($HOME/redis-bash-cli hget "$group":"$host" mod)
-    low=$($HOME/redis-bash-cli hget "$group":"$host" low)
+    crit=$($HOME/bin/redis-bash-cli hget "$group":"$host" crit)
+    imp=$($HOME/bin/redis-bash-cli hget "$group":"$host" imp)
+    mod=$($HOME/bin/redis-bash-cli hget "$group":"$host" mod)
+    low=$($HOME/bin/redis-bash-cli hget "$group":"$host" low)
     printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" " $group" " $host" "" "   $crit" "" "   $imp" "" "   $mod" "" "   $low"
 done
 echo
@@ -41,13 +41,13 @@ printf "+------------------------+------------------------+---------------------
 printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" "|  Group" "|  Host" "|" "  Critical" "|" "  Important" "|" "  Moderate" "|" "  Low               "
 printf "+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+\n"
 
-for i in `$HOME/redis-bash-cli keys $group\* | cut -d: -f1,2|sort -u`;do 
+for i in `$HOME/bin/redis-bash-cli keys $group\* | cut -d: -f1,2|sort -u`;do 
     
     host=`echo $i|cut -d: -f2`
-    crit=$($HOME/redis-bash-cli hget "$group":"$host" crit)
-    imp=$($HOME/redis-bash-cli hget "$group":"$host" imp)
-    mod=$($HOME/redis-bash-cli hget "$group":"$host" mod)
-    low=$($HOME/redis-bash-cli hget "$group":"$host" low)
+    crit=$($HOME/bin/redis-bash-cli hget "$group":"$host" crit)
+    imp=$($HOME/bin/redis-bash-cli hget "$group":"$host" imp)
+    mod=$($HOME/bin/redis-bash-cli hget "$group":"$host" mod)
+    low=$($HOME/bin/redis-bash-cli hget "$group":"$host" low)
     printf "%-25s%-25s%-1s${B_RED}%-24s${NC}%-1s${RED}%-24s${NC}%-1s${YELLOW}%-24s${NC}%-1s${BLUE}%-24s${NC}\n" " $group" " $host" "" "   $crit" "" "   $imp" "" "   $mod" "" "   $low"
 done
 echo

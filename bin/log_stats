@@ -1,5 +1,4 @@
 #!/bin/bash
-~
 for i in $(find "$HOME"/scan_results/*/* -type d);do
   g=$(basename "$i")
   for j in `find "$i" -name "vstats*"`;do
@@ -11,8 +10,8 @@ for i in $(find "$HOME"/scan_results/*/* -type d);do
     mod=$(awk -F "|" '{print $5}' "$j")
     low=$(awk -F "|" '{print $6}' "$j")
     echo $g:$h $date $crit $imp $mod $low
-    ./redis-bash-cli hset $g:$h date $date crit $crit imp $imp mod $mod low $low  
-    ./redis-bash-cli hset $g:$h:$date date $date crit $crit imp $imp mod $mod low $low #archive it in redis --> is it a good idea ? if not use for cache why not just write those info to mysql ?
+    ~/bin/redis-bash-cli hset $g:$h date $date crit $crit imp $imp mod $mod low $low  
+    ~/bin/redis-bash-cli hset $g:$h:$date date $date crit $crit imp $imp mod $mod low $low #archive it in redis --> is it a good idea ? if not use for cache why not just write those info to mysql ?
   done
 done
     

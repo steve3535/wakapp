@@ -5,7 +5,10 @@
   GREEN='\033[0;32m'
   YELLOW='\033[0;93m'
   B_WHITE='\033[0;37m'
-
+  LOGFILE="$HOME"/logs/waka-core.log
+  date >"$LOGFILE"
+  echo 
+  
   bar() {
     local w=80 p=$1;  shift
     # create a string of spaces, then change them to dots
@@ -183,7 +186,7 @@
                  fi
 
                  for i in "${@:3}";do
-	           "$HOME"/bin/redis-bash-cli del "$GRP_NAME":"$i" 2>/dev/null
+	           "$HOME"/bin/redis-bash-cli del "$GRP_NAME":"$i" &>>"$HOME"/logs/waka-core.log 
                    rm -f "$HOME"/scan_results/*/"$GRP_NAME"/resultat-"$i".txt 2>/dev/null		   
                    sed -i "/$i/d" "$HOSTFILE" && echo -e "\n$i has been removed from the $GRP_NAME group\n"
                  done
@@ -243,7 +246,7 @@
     fi
   done
   HOSTGR=$(echo "${list// /,}")
-  "$HOME"/bin/setup_hosts -e HOSTS="$HOSTGR"  
+  "$HOME"/bin/setup_hosts -e HOSTS="$HOSTGR" -e "ansible_python_interpreter=/usr/bin/python" 
 
  }
 
@@ -258,8 +261,8 @@
       echo
     else
       echo -e "${YELLOW}WARNING ${NC}Hosts within the group that were not setup will be skipped. To setup, run : waka hostgroup setup [GROUPNAME]"
-      $HOME/scan_hosts -e HOSTS="$i" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/harmo_results "$i" && echo "Logging stats ..." && $HOME/log_stats >/dev/null 2>&1
-      $HOME/pull_stats "$i"
+      $HOME/bin/scan_hosts -e HOSTS="$i" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/bin/harmo_results "$i" && echo "Logging stats ..." && $HOME/bin/log_stats &>"$LOGFILE"
+      $HOME/bin/pull_stats "$i"
     fi
   done
     
