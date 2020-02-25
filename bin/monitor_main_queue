@@ -9,7 +9,7 @@
 #clear
 echo -e "${GREEN}[*] Polling ...${NC}"                                                                                    
 while true;do                                                                                            
-  flag=$("$HOME"/redis-bash-cli get task_flag)
+  flag=$("$HOME"/bin/redis-bash-cli get task_flag)
   if [[ "$flag" -eq 1 ]];then                                                                       
     continue                                                                                             
   else
@@ -42,7 +42,7 @@ while true;do
 
     #Check channels (connections) of the main queue consumers                                            
     echo -e "${BLUE}[-] Checking for orphan workers ...${NC}"                                                               
-    curl -s -u guest:guest http://localhost:15672/api/queues/%2f/yum | jq .consumer_details[].channel_details.connection_name | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g' > "$HOME"/worker_main_id
+    curl -s -u guest:guest http://localhost:15672/api/queues/%2f/yum | jq .consumer_details[].channel_details.connection_name | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g' > "$HOME"/bin/worker_main_id
 
     #retrieve rabbitmq ip add                                                                            
     echo -e "${BLUE}[-] Retrieving Queue IP ...${NC}"                                                                       
@@ -52,9 +52,9 @@ while true;do
 
     echo -e "${GREEN}[*] Closing channels ...${NC}"                                                                        
     while read line;do
-      echo "Socket shutdown ..." >> "$HOME"/fetch_main.log 2>&1
+      echo "Socket shutdown ..." >> "$HOME"/bin/fetch_main.log 2>&1
       docker run docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line"
-      done < "$HOME"/worker_main_id
+      done < "$HOME"/bin/worker_main_id
     echo         
     echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
     sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7

@@ -277,12 +277,12 @@
      nth=50
      group="$1"
      echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
-     $HOME/fetch_pkgs "$group" "$nth"
+     $HOME/bin/fetch_pkgs "$group" "$nth"
      sleep 5
-     $HOME/monitor_main_queue
+     $HOME/bin/monitor_main_queue
      sleep 3
      echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
-     $HOME/update_hosts -e HOSTS="$group"
+     $HOME/bin/update_hosts -e HOSTS="$group"
    fi
    echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
    echo -e "\n${B_RED}[!] RESTART OF THE HOSTS IS REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"

@@ -1,96 +1,187 @@
 [WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "changed": false,
+    "checksum": "78528625bdb9519370c8e92a5b0cbcc2d8338464",
+    "dest": "/etc/sudoers.d/wakausr",
+    "gid": 0,
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/sudoers.d/wakausr",
+    "size": 31,
+    "state": "file",
+    "uid": 0
+}
+[WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
-PLAY [localhost] ************************************************************************************************************************************************************
+PLAY [localhost] **************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [Create scan_results & messages directory] *****************************************************************************************************************************
+TASK [embed key in client source file] ****************************************************************************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP ********************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.fz3BAg
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd /root/rpmbuild/BUILD
++ rm -rf wakapp-client-1.0
++ /usr/bin/gzip -dc /root/rpmbuild/SOURCES/wakapp-client-1.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd wakapp-client-1.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.qaSdG3
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd wakapp-client-1.0
++ make
+gcc -o wakapp-client wakapp-client.c
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.z0KUPQ
++ umask 022
++ cd /root/rpmbuild/BUILD
++ '[' /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64 '!=' / ']'
++ rm -rf /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
+++ dirname /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
++ mkdir -p /root/rpmbuild/BUILDROOT
++ mkdir /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
++ cd wakapp-client-1.0
++ /usr/bin/make install DESTDIR=/root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
+mkdir -p /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64/usr/bin
+install -m 0755 wakapp-client /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64/usr/bin/wakapp-client
++ mkdir -p /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64/etc/yum.repos.d
++ cp /root/rpmbuild/SOURCES/wakapp-client-1.0/wakapp.repo /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64/etc/yum.repos.d/wakapp.repo
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /root/rpmbuild/BUILD/wakapp-client-1.0
+extracting debug info from /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64/usr/bin/wakapp-client
+dwz: Too few files for multifile optimization
+/usr/lib/rpm/sepdebugcrcfix: Updated 0 CRC32s, 1 CRC32s did match.
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/redhat/brp-compress
++ /usr/lib/rpm/redhat/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/brp-python-bytecompile /usr/bin/python 1
++ /usr/lib/rpm/redhat/brp-python-hardlink
++ /usr/lib/rpm/redhat/brp-java-repack-jars
+Processing files: wakapp-client-1.0-1.el7.x86_64
+Provides: wakapp-client = 1.0-1.el7 wakapp-client(x86-64) = 1.0-1.el7
+Requires(interp): /bin/sh /bin/sh
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires(post): /bin/sh
+Requires(postun): /bin/sh
+Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.2.5)(64bit) rtld(GNU_HASH)
+Processing files: wakapp-client-debuginfo-1.0-1.el7.x86_64
+Provides: wakapp-client-debuginfo = 1.0-1.el7 wakapp-client-debuginfo(x86-64) = 1.0-1.el7
+Requires(rpmlib): rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1 rpmlib(CompressedFileNames) <= 3.0.4-1
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
+Wrote: /root/rpmbuild/SRPMS/wakapp-client-1.0-1.el7.src.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-1.0-1.el7.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-debuginfo-1.0-1.el7.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.RmuhG2
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd wakapp-client-1.0
++ /usr/bin/rm -rf /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64
++ exit 0
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [localhost] **************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Create scan_results & messages directory] *******************************************************************************************************************************************************************
 ok: [localhost] => (item=bin)
 ok: [localhost] => (item=scan_results)
 ok: [localhost] => (item=messages)
 
-TASK [copy files to wakausr home directory] *********************************************************************************************************************************
-ok: [localhost]
-
-TASK [copy files to wakausr home directory] *********************************************************************************************************************************
+TASK [copy files to wakausr home directory] ***********************************************************************************************************************************************************************
 changed: [localhost]
 
-PLAY RECAP ******************************************************************************************************************************************************************
-localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+TASK [copy files to wakausr home directory] ***********************************************************************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP ********************************************************************************************************************************************************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
-PLAY [localhost] ************************************************************************************************************************************************************
+PLAY [localhost] **************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [load redis image] *****************************************************************************************************************************************************
+TASK [load redis image] *******************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [load nginx image] *****************************************************************************************************************************************************
+TASK [load nginx image] *******************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [load rabbitmq image] **************************************************************************************************************************************************
+TASK [load rabbitmq image] ****************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [load rhel-proxy7 image] ***********************************************************************************************************************************************
+TASK [load rhel-proxy7 image] *************************************************************************************************************************************************************************************
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************************************************************************************************
+PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
-PLAY [localhost] ************************************************************************************************************************************************************
+PLAY [localhost] **************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [start & enable docker] ************************************************************************************************************************************************
+TASK [start & enable docker] **************************************************************************************************************************************************************************************
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************************************************************************************************
+PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
-PLAY [localhost] ************************************************************************************************************************************************************
+PLAY [localhost] **************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [create redis container] ***********************************************************************************************************************************************
+TASK [create redis container] *************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [create nginx containers] **********************************************************************************************************************************************
+TASK [create nginx containers] ************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [create rabbitmq containers] *******************************************************************************************************************************************
+TASK [create rabbitmq containers] *********************************************************************************************************************************************************************************
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************************************************************************************************
+PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
-PLAY [localhost] ************************************************************************************************************************************************************
+PLAY [localhost] **************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [firewall rules] *******************************************************************************************************************************************************
+TASK [firewall rules] *********************************************************************************************************************************************************************************************
 ok: [localhost] => (item=5672/tcp)
 ok: [localhost] => (item=15672/tcp)
 ok: [localhost] => (item=8888/tcp)
 ok: [localhost] => (item=6379/tcp)
 
-PLAY RECAP ******************************************************************************************************************************************************************
+PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

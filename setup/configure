@@ -8,7 +8,8 @@ B_WHITE='\033[0;37m'
 TIRET=...................
 WAKAUSR_HOME=/home/wakausr
 
->../logs/configure.log
+LOGFILE=../logs/configure.log
+>"$LOGFILE"
 
 #CHECK BASH
 user_shell="$SHELL"
@@ -34,17 +35,17 @@ fi
 #CHECK INTERNET CONNECTIVITY
 
 printf "%-36s%s" " . Checking Internet connectivity " "$TIRET "
-nc -z redhat.com 443 &>../logs/configure.log
+nc -z redhat.com 443 &>"$LOGFILE"
 if [ "$?" -eq 0 ];then
         printf "${GREEN}%s${NC}\n" "OK"
 else
         printf "${RED}%s${NC}" "FAIL: No Internet connection ... retrying ..."
-        nc -z redhat.com 443 &>../logs/configure.log
+        nc -z redhat.com 443 &>"$LOGFILE"
         if [ "$?" -eq 0 ];then
             printf "${GREEN}%s${NC}\n" "OK"
         else 
             printf "${RED}%s${NC}" " ... "
-            nc -z redhat.com 443 &>../logs/configure.log
+            nc -z redhat.com 443 &>"$LOGFILE"
             if [ "$?" -eq 0 ];then
                 printf "${GREEN}%s${NC}\n" "OK"
             else
@@ -57,7 +58,7 @@ fi
 #CHECK SUBSCRIPTION STATUS
 
 printf "%-36s%s" " . Checking Host Subscription " "$TIRET "
-subscription-manager status &>../logs/configure.log
+subscription-manager status &>"$LOGFILE"
 if [ "$?" -ne 0 ];then
         printf "${RED}%s${NC}\n" "FAIL: The host is not subscribed"
         exit 1
@@ -67,14 +68,20 @@ fi
 
 printf "%-36s%s" " . Checking repositories " "$TIRET "
 ok=1
-#for repo in rhel-7-server-beta-rpms rhel-7-server-extras-rpms rhel-7-server-optional-rpms rhel-7-server-optional-beta-rpms;do
- #subscription-manager repos --list-enabled | grep "$repo" &>../logs/configure.log
- #if [ "$?" -ne 0 ];then
-  #printf "${RED}%s${NC}\n" "REPO "$repo" is not enabled"
-  #ok=0
-  #exit 1
- #fi
-#done
+for repo in rhel-7-server-beta-rpms rhel-7-server-extras-rpms rhel-7-server-optional-rpms rhel-7-server-optional-beta-rpms;do
+ subscription-manager repos --list-enabled | grep "$repo" &>"$LOGFILE"
+ if [ "$?" -ne 0 ];then
+  printf "${RED}%s${NC}\n" "REPO "$repo" is not enabled"
+  ok=0
+  exit 1
+ fi
+done
+
+#install the rhsecapi repo
+yum -y install http://people.redhat.com/rsawhill/rpms/latest-rsawaroha-release.rpm &>"$LOGFILE"
+ansible localhost -m yum -a 'name=rhsecapi state=latest' &>"$LOGFILE"
+ansible localhost -m pip -a 'name=pika' &>"$LOGFILE"
+touch /etc/rhsecapi-no-argcomplete
 
 if [ "$ok" -eq 1 ];then
   printf "${GREEN}%s${NC}\n" "OK"
@@ -84,7 +91,7 @@ fi
 missing_pkgs=
 printf "%-36s%s" " . Checking required packages " "$TIRET "
 for pkg in nc wget curl rsync gcc rpmbuild ansible python yumdownloader docker pip3;do
-    "$pkg" --version &>../logs/configure.log
+    "$pkg" --version &>"$LOGFILE"
     if [ "$?" -ne 0 ];then
          missing_pkgs+="$pkg "
     fi
@@ -103,8 +110,8 @@ printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: install the latest version of
 
 printf "%-36s%s" " . Create wakapp admin user " "$TIRET "
 
-ansible localhost -m user -a 'name=wakausr shell=/bin/bash generate_ssh_key=yes groups=dockerroot' &>../logs/configure.log
-ansible localhost -m copy -a 'content="wakausr ALL=(ALL) NOPASSWD:ALL\n" dest=/etc/sudoers.d/wakausr' &>../logs/configure.log
+ansible localhost -m user -a 'name=wakausr shell=/bin/bash generate_ssh_key=yes groups=dockerroot' &>"$LOGFILE"
+ansible localhost -m copy -a 'content="wakausr ALL=(ALL) NOPASSWD:ALL\n" dest=/etc/sudoers.d/wakausr' &>"$LOGFILE"
 
 #WAKAUSR EXTRA PERMISSIONS
 setfacl -R -m u:wakausr:rwx /var/cache/yum
@@ -112,12 +119,16 @@ setfacl -R -m d:u:wakausr:rwx /var/cache/yum
 
 printf "${GREEN}%s${NC}\n" "OK"
 
+
+printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: Set wakapp admin user python library to version 3"
+
 #WAKAPP SERVER HOSTNAME AND IP
 
 read -p " . Server hostname [$(hostname)]: " wakapp_srv_hostname
 if [ -z "$wakapp_srv_hostname" ];then
   wakapp_srv_hostname=$(hostname)
 fi
+
 
 wakapp_srv_ip=(`ip a | grep -w inet | grep global | awk '{ print $2 }' | cut -d"/" -f1`)  # the parenthesis are for an array of results in case there are several ip addresses
 
@@ -183,33 +194,33 @@ read -p "   Setup will use the values $wakapp_srv_hostname and $wakapp_srv_ip. C
          ;;
   esac
 
-#read -p " . Path to the base RHEL 6 iso: " base6
+read -p " . Path to the base RHEL 6 iso: " base6
 #MOUNT RHEL BASE ISOs
-#while [ ! -f "$base6" ];do
-# printf "${RED} %s\n${NC}" "  Invalid Path"
-# read -p " . Path to the base RHEL 6 iso: " base6
-#done
+while [ ! -f "$base6" ];do
+ printf "${RED} %s\n${NC}" "  Invalid Path"
+ read -p " . Path to the base RHEL 6 iso: " base6
+done
 
-#read -p " . Path to the base RHEL 7 iso: " base7
-#while [ ! -f "$base7" ];do
-# printf "${RED} %s\n${NC}" "  Invalid Path"
-# read -p " . Path to the base RHEL 7 iso: " base7
-#done
+read -p " . Path to the base RHEL 7 iso: " base7
+while [ ! -f "$base7" ];do
+ printf "${RED} %s\n${NC}" "  Invalid Path"
+ read -p " . Path to the base RHEL 7 iso: " base7
+done
 
-#printf "%-36s%s" " . Mount RHEL Base OS isos " "$TIRET "
-#ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>../logs/configure.log
-#if [ "$?" -eq 0 ];then
-#  printf "${GREEN}%s${NC}\n" "OK"
-#else
-#  printf "${RED} %s\n${NC}" "  An error occured while mounting base OS isos"
-#  exit 1
-#fi
+printf "%-36s%s" " . Mount RHEL Base OS isos " "$TIRET "
+ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>"$LOGFILE"
+if [ "$?" -eq 0 ];then
+  printf "${GREEN}%s${NC}\n" "OK"
+else
+  printf "${RED} %s\n${NC}" "  An error occured while mounting base OS isos"
+  exit 1
+fi
 
 
 printf "%-36s%s" " . Build binaries " "$TIRET "
 
    #copy bash-completion script
-   cp ../bin/waka-completion.bash /etc/bash_completion.d/  &>../logs/configure.log 
+   cp ../bin/waka-completion.bash /etc/bash_completion.d/  &>>"$LOGFILE" 
 
 cp -r ../src/rpmbuild/ ~root/
 if [ "$?" -ne 0 ];then
@@ -217,19 +228,19 @@ if [ "$?" -ne 0 ];then
   exit 1
 fi
 
-ansible-playbook --tags rebuildclient configure.yml &>>../logs/configure.log
+ansible-playbook --tags rebuildclient configure.yml &>>"$LOGFILE"
 if [ "$?" -ne 0 ];then
   printf "${RED} %s\n${NC}" "  An error occured while building the binaries"
   exit 1
 fi
 
-cd ~/rpmbuild/SOURCES && tar czf wakapp-client-1.0.tar.gz wakapp-client-1.0 &>>../../wakapp/logs/configure.log
+cd ~/rpmbuild/SOURCES && tar czf wakapp-client-1.0.tar.gz wakapp-client-1.0 &>>/dev/null
 if [ "$?" -ne 0 ];then
   printf "${RED} %s\n${NC}" "  An error occured while building the binaries"
   exit 1
 fi
 
-cd - &>/dev/null && rpmbuild -ba ~root/rpmbuild/SPECS/wakapp-client.spec &>>../logs/configure.log
+cd - &>/dev/null && rpmbuild -ba ~root/rpmbuild/SPECS/wakapp-client.spec &>>"$LOGFILE"
 
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
@@ -241,7 +252,7 @@ fi
 cp ~root/rpmbuild/RPMS/x86_64/wakapp-client-1.0-1.el7.x86_64.rpm ../install/
  
 printf "%-36s%s" " . Setup app directories " "$TIRET "
-ansible-playbook --tags createdir configure.yml &>../logs/configure.log
+ansible-playbook --tags createdir configure.yml &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
 else
@@ -250,7 +261,7 @@ else
 fi
 
 printf "%-36s%s" " . Loading Images " "$TIRET "
-ansible-playbook configure.yml --tags containerimages &>>../logs/configure.log
+ansible-playbook configure.yml --tags containerimages &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
 else
@@ -259,8 +270,8 @@ else
 fi
 
 printf "%-36s%s" " . Create required containers " "$TIRET "
-ansible-playbook configure.yml --tags startdocker &>>../logs/configure.log
-ansible-playbook configure.yml --tags containers &>>../logs/configure.log
+ansible-playbook configure.yml --tags startdocker &>>"$LOGFILE"
+ansible-playbook configure.yml --tags containers &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
 else
@@ -269,7 +280,7 @@ else
 fi
 
 printf "%-36s%s" " . Setting up firewall rules " "$TIRET "
-ansible-playbook -e "ansible_python_interpreter=/usr/bin/python2.7" configure.yml --tags parefeu &>>../logs/configure.log
+ansible-playbook -e "ansible_python_interpreter=/usr/bin/python2.7" configure.yml --tags parefeu &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
 else
@@ -278,5 +289,3 @@ else
 fi
 
 echo
-
-
