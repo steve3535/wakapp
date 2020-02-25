@@ -1,0 +1,8 @@
+Mon Feb 24 16:27:50 EST 2020
+Tue Feb 25 09:58:57 EST 2020
+ [x] Sent 'basesystem bash filesystem glibc glibc-common'
+ [x] Sent 'glibc-devel glibc-headers info libgcc libselinux'
+ [x] Sent 'libsepol libstdc++ ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss-softokn-freebl nss-util pcre readline redhat-release-server'
+ [x] Sent 'setup sqlite tzdata zlib'
+Tue Feb 25 15:01:59 EST 2020
