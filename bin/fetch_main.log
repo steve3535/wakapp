@@ -6,3 +6,216 @@ Tue Feb 25 09:58:57 EST 2020
  [x] Sent 'nss-softokn-freebl nss-util pcre readline redhat-release-server'
  [x] Sent 'setup sqlite tzdata zlib'
 Tue Feb 25 15:01:59 EST 2020
+Thu Feb 27 14:45:06 GMT 2020
+ [x] Sent 'basesystem bash filesystem glibc glibc-common'
+ [x] Sent 'info libgcc libselinux libsepol libstdc++'
+ [x] Sent 'ncurses-base ncurses-libs nspr nss-softokn-freebl nss-util'
+ [x] Sent 'pcre readline redhat-release-server setup sqlite'
+ [x] Sent 'tzdata zlib'
+Thu Feb 27 14:51:16 GMT 2020
+ [x] Sent 'basesystem bash filesystem glibc glibc-common'
+ [x] Sent 'info libgcc libselinux libsepol libstdc++'
+ [x] Sent 'ncurses-base ncurses-libs nspr nss-softokn-freebl nss-util'
+ [x] Sent 'pcre readline redhat-release-server setup sqlite'
+ [x] Sent 'tzdata zlib'
+Thu Feb 27 15:15:18 GMT 2020
+ [x] Sent 'basesystem bash filesystem glibc glibc-common'
+ [x] Sent 'info libgcc libselinux libsepol libstdc++'
+ [x] Sent 'ncurses-base ncurses-libs nspr nss-softokn-freebl nss-util'
+ [x] Sent 'pcre readline redhat-release-server setup sqlite'
+ [x] Sent 'tzdata zlib'
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received b'basesystem bash filesystem glibc glibc-common'
+Traceback (most recent call last):
+  File "./worker.py", line 43, in <module>
+    channel.start_consuming()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 834, in process_data_events
+    self._dispatch_channel_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 566, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1494, in _dispatch_events
+    evt.properties, evt.body)
+  File "./worker.py", line 34, in callback
+    detach=False,remove=True)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 803, in run
+    detach=detach, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 861, in create
+    resp = self.client.api.create_container(**create_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 430, in create_container
+    return self.create_container_from_config(config, name)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 440, in create_container_from_config
+    res = self._post_json(u, data=config, params=params)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/client.py", line 289, in _post_json
+    return self._post(url, data=json.dumps(data2), **kwargs)
+  File "/usr/lib64/python3.6/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'bytes' is not JSON serializable
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received b'basesystem bash filesystem glibc glibc-common'
+Traceback (most recent call last):
+  File "./worker.py", line 43, in <module>
+    channel.start_consuming()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 834, in process_data_events
+    self._dispatch_channel_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 566, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1494, in _dispatch_events
+    evt.properties, evt.body)
+  File "./worker.py", line 34, in callback
+    detach=False,remove=True)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 803, in run
+    detach=detach, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 861, in create
+    resp = self.client.api.create_container(**create_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 430, in create_container
+    return self.create_container_from_config(config, name)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 440, in create_container_from_config
+    res = self._post_json(u, data=config, params=params)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/client.py", line 289, in _post_json
+    return self._post(url, data=json.dumps(data2), **kwargs)
+  File "/usr/lib64/python3.6/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'bytes' is not JSON serializable
+<METHOD(['channel_number=1', 'frame_type=1', "method=<Queue.DeclareOk(['consumer_count=0', 'message_count=15', 'queue=yum'])>"])>
+  File "<stdin>", line 1
+    client.containers.run("rhel-proxy:7b")
+    ^
+IndentationError: unexpected indent
+
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received b'basesystem bash filesystem glibc glibc-common'
+Traceback (most recent call last):
+  File "./worker.py", line 43, in <module>
+    channel.start_consuming()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 834, in process_data_events
+    self._dispatch_channel_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 566, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1494, in _dispatch_events
+    evt.properties, evt.body)
+  File "./worker.py", line 34, in callback
+    detach=False,remove=True)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 803, in run
+    detach=detach, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 861, in create
+    resp = self.client.api.create_container(**create_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 430, in create_container
+    return self.create_container_from_config(config, name)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 440, in create_container_from_config
+    res = self._post_json(u, data=config, params=params)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/client.py", line 289, in _post_json
+    return self._post(url, data=json.dumps(data2), **kwargs)
+  File "/usr/lib64/python3.6/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'bytes' is not JSON serializable
+<METHOD(['channel_number=1', 'frame_type=1', "method=<Queue.DeclareOk(['consumer_count=0', 'message_count=15', 'queue=yum'])>"])>
+  File "<stdin>", line 1
+    ch.basic_ack(delivery_tag = method.delivery_tag)
+    ^
+IndentationError: unexpected indent
+'ctag1.d56051b52fc6457e8a9458a08d13082d'
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received b'basesystem bash filesystem glibc glibc-common'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 834, in process_data_events
+    self._dispatch_channel_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 566, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1494, in _dispatch_events
+    evt.properties, evt.body)
+  File "<stdin>", line 10, in callback
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 803, in run
+    detach=detach, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 861, in create
+    resp = self.client.api.create_container(**create_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 430, in create_container
+    return self.create_container_from_config(config, name)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 440, in create_container_from_config
+    res = self._post_json(u, data=config, params=params)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/client.py", line 289, in _post_json
+    return self._post(url, data=json.dumps(data2), **kwargs)
+  File "/usr/lib64/python3.6/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'bytes' is not JSON serializable
+
+KeyboardInterrupt
+
+KeyboardInterrupt
+
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received b'basesystem bash filesystem glibc glibc-common'
+Traceback (most recent call last):
+  File "./worker.py", line 43, in <module>
+    channel.start_consuming()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 834, in process_data_events
+    self._dispatch_channel_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 566, in _dispatch_channel_events
+    impl_channel._get_cookie()._dispatch_events()
+  File "/usr/local/lib/python3.6/site-packages/pika/adapters/blocking_connection.py", line 1494, in _dispatch_events
+    evt.properties, evt.body)
+  File "./worker.py", line 34, in callback
+    detach=False,remove=True)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 803, in run
+    detach=detach, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/models/containers.py", line 861, in create
+    resp = self.client.api.create_container(**create_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 430, in create_container
+    return self.create_container_from_config(config, name)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/container.py", line 440, in create_container_from_config
+    res = self._post_json(u, data=config, params=params)
+  File "/usr/local/lib/python3.6/site-packages/docker/api/client.py", line 289, in _post_json
+    return self._post(url, data=json.dumps(data2), **kwargs)
+  File "/usr/lib64/python3.6/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'bytes' is not JSON serializable

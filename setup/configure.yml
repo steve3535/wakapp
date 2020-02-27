@@ -42,6 +42,7 @@
       - bin
       - scan_results
       - messages
+      - logs
     tags: createdir
 
   - name: copy files to wakausr home directory
@@ -62,13 +63,6 @@
       mode: 0755
     tags: createdir
  
-  #- name: extract files
-  #  unarchive:
-  #    src: ./wakapp-srv.tar.gz
-  #    dest: /home/wakausr/wakapp-srv
-  #    owner: wakausr
-  #    keep_newer: true
-  #  tags: extract
   - name: start & enable docker
     service:
       name: docker

@@ -5,13 +5,9 @@ import os
 import sys 
 import subprocess
 
-#f = open(os.devnull, 'w')
+#f = open("./fetch_main.log",'a')
 #sys.stdout = f
 #sys.stderr = f
-
-f = open("./fetch_main.log",'a')
-sys.stdout = f
-sys.stderr = f
 
 pid=os.getpid()
 dirname="/var/cache/yum/x86_64/7Server/stream7/{}".format(pid)
@@ -25,7 +21,7 @@ channel.queue_declare(queue='yum')
 def callback(ch, method, properties, body):
  print(" [x] Received %r" % body)
  client = docker.from_env()
- client.containers.run("rhel-proxy:7b",body,
+ client.containers.run("docker.io/nigelfoster/rhel-proxy:7c",body,
                         volumes={'/etc/yum.repos.d/': {'bind':'/etc/yum.repos.d/', 'mode':'ro'},
                                  '/etc/pki/entitlement/': {'bind':'/etc/pki/entitlement/','mode':'ro'},
                                  '/media7/': {'bind':'/media7/','mode':'ro'},

@@ -16,7 +16,7 @@ user_shell="$SHELL"
 printf "\n"
 printf "%-36s%s" " . Checking shell " "$TIRET "
 if [ "$user_shell" != "/bin/bash" ];then
-        printf "${RED}%s${NC}\n" "the setup script runs under /bin/bash"
+        printf "${RED}%s${NC}\n" "Kindly run the setup script with the bash shell"
         exit 1
 else
         printf "${GREEN}%s${NC}\n" "OK"
@@ -32,20 +32,59 @@ else
         printf "${GREEN}%s${NC}\n" "OK"
 fi
 
+#CHECK SELINUX
+
+printf "%-36s%s" " . Checking SElinux " "$TIRET "
+sestatus | grep disabled &>>"$LOGFILE"
+if [ "$?" -ne 0 ];then
+        printf "${RED}%s${NC}\n" "FAIL: SELinux is enabled"
+        exit 1
+else
+        printf "${GREEN}%s${NC}\n" "OK"
+fi
+
+#CHECK PYTHON 3
+
+printf "%-36s%s" " . Checking Python v3 " "$TIRET "
+py3_path=`which python3 &>>"$LOGFILE"`
+if [ "$?" -ne 0 ];then
+        printf "${RED}%s${NC}\n" "FAIL: Python 3 not found"
+        exit 1
+else
+        printf "${GREEN}%s${NC}\n" "OK"
+fi
+
+#CHECK FOR NETCAT
+missing_pkgs=
+printf "%-36s%s" " . Checking prereqs " "$TIRET "
+for pkg in nc;do
+    "$pkg" --version &>>"$LOGFILE"
+    if [ "$?" -ne 0 ];then
+         missing_pkgs+="$pkg "
+    fi
+done
+
+if [ -z "$missing_pkgs" ];then
+        printf "${GREEN}%s${NC}\n" "OK"
+else
+        printf "${RED}%s${NC}\n" "FAIL: Prereq.: $missing_pkgs"
+        exit 1
+fi
+
 #CHECK INTERNET CONNECTIVITY
 
 printf "%-36s%s" " . Checking Internet connectivity " "$TIRET "
-nc -z redhat.com 443 &>"$LOGFILE"
+nc -z redhat.com 443 &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
         printf "${GREEN}%s${NC}\n" "OK"
 else
         printf "${RED}%s${NC}" "FAIL: No Internet connection ... retrying ..."
-        nc -z redhat.com 443 &>"$LOGFILE"
+        nc -z redhat.com 443 &>>"$LOGFILE"
         if [ "$?" -eq 0 ];then
             printf "${GREEN}%s${NC}\n" "OK"
         else 
             printf "${RED}%s${NC}" " ... "
-            nc -z redhat.com 443 &>"$LOGFILE"
+            nc -z redhat.com 443 &>>"$LOGFILE"
             if [ "$?" -eq 0 ];then
                 printf "${GREEN}%s${NC}\n" "OK"
             else
@@ -58,7 +97,7 @@ fi
 #CHECK SUBSCRIPTION STATUS
 
 printf "%-36s%s" " . Checking Host Subscription " "$TIRET "
-subscription-manager status &>"$LOGFILE"
+subscription-manager status &>>"$LOGFILE"
 if [ "$?" -ne 0 ];then
         printf "${RED}%s${NC}\n" "FAIL: The host is not subscribed"
         exit 1
@@ -78,9 +117,9 @@ for repo in rhel-7-server-beta-rpms rhel-7-server-extras-rpms rhel-7-server-opti
 done
 
 #install the rhsecapi repo
-yum -y install http://people.redhat.com/rsawhill/rpms/latest-rsawaroha-release.rpm &>"$LOGFILE"
-ansible localhost -m yum -a 'name=rhsecapi state=latest' &>"$LOGFILE"
-ansible localhost -m pip -a 'name=pika' &>"$LOGFILE"
+yum -y install http://people.redhat.com/rsawhill/rpms/latest-rsawaroha-release.rpm &>>"$LOGFILE"
+ansible localhost -e ansible_python_interpreter=/usr/bin/python2.7 -m yum -a 'name=rhsecapi state=latest' &>>"$LOGFILE"
+ansible localhost -m pip -a 'name=pika' &>>"$LOGFILE"
 touch /etc/rhsecapi-no-argcomplete
 
 if [ "$ok" -eq 1 ];then
@@ -90,8 +129,8 @@ fi
 #CHECK REQUIRED PACKAGES
 missing_pkgs=
 printf "%-36s%s" " . Checking required packages " "$TIRET "
-for pkg in nc wget curl rsync gcc rpmbuild ansible python yumdownloader docker pip3;do
-    "$pkg" --version &>"$LOGFILE"
+for pkg in wget curl rsync gcc rpmbuild ansible python yumdownloader createrepo jq docker pip pip3;do
+    "$pkg" --version &>>"$LOGFILE"
     if [ "$?" -ne 0 ];then
          missing_pkgs+="$pkg "
     fi
@@ -104,14 +143,14 @@ else
         exit 1
 fi
 
-printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: install the latest version of Ansible and the docker-plugin through PIP3"
+printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: install the latest version of Ansible and the docker-plugin through both PIP and PIP3"
 
 #CREATE WAKA USER
 
 printf "%-36s%s" " . Create wakapp admin user " "$TIRET "
 
-ansible localhost -m user -a 'name=wakausr shell=/bin/bash generate_ssh_key=yes groups=dockerroot' &>"$LOGFILE"
-ansible localhost -m copy -a 'content="wakausr ALL=(ALL) NOPASSWD:ALL\n" dest=/etc/sudoers.d/wakausr' &>"$LOGFILE"
+ansible localhost -m user -a 'name=wakausr shell=/bin/bash generate_ssh_key=yes groups=dockerroot' &>>"$LOGFILE"
+ansible localhost -m copy -a 'content="wakausr ALL=(ALL) NOPASSWD:ALL\n" dest=/etc/sudoers.d/wakausr' &>>"$LOGFILE"
 
 #WAKAUSR EXTRA PERMISSIONS
 setfacl -R -m u:wakausr:rwx /var/cache/yum
@@ -119,8 +158,12 @@ setfacl -R -m d:u:wakausr:rwx /var/cache/yum
 
 printf "${GREEN}%s${NC}\n" "OK"
 
+#WAKAUSR PYTHON 3 SYM LINK
+#rm -f /home/wakausr/bin/python &>/dev/null
+#ln -sf "$py3_path" /home/wakausr/bin/python &>>"$LOGFILE"
+ansible localhost -m lineinfile -a 'regexp="PATH=" path="/home/wakausr/.bash_profile" line="PATH=$HOME/bin/:$PATH:$HOME/.local/bin"' &>>"$LOGFILE"
 
-printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: Set wakapp admin user python library to version 3"
+#printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: Set wakapp admin user python library to version 3"
 
 #WAKAPP SERVER HOSTNAME AND IP
 
@@ -128,7 +171,6 @@ read -p " . Server hostname [$(hostname)]: " wakapp_srv_hostname
 if [ -z "$wakapp_srv_hostname" ];then
   wakapp_srv_hostname=$(hostname)
 fi
-
 
 wakapp_srv_ip=(`ip a | grep -w inet | grep global | awk '{ print $2 }' | cut -d"/" -f1`)  # the parenthesis are for an array of results in case there are several ip addresses
 
@@ -208,7 +250,7 @@ while [ ! -f "$base7" ];do
 done
 
 printf "%-36s%s" " . Mount RHEL Base OS isos " "$TIRET "
-ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>"$LOGFILE"
+ansible-playbook -e iso_ver6="$base6" -e iso_ver7="$base7" --tags mountiso configure.yml &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
 else
@@ -261,6 +303,7 @@ else
 fi
 
 printf "%-36s%s" " . Loading Images " "$TIRET "
+ansible-playbook configure.yml --tags startdocker &>>"$LOGFILE"
 ansible-playbook configure.yml --tags containerimages &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"
@@ -270,7 +313,6 @@ else
 fi
 
 printf "%-36s%s" " . Create required containers " "$TIRET "
-ansible-playbook configure.yml --tags startdocker &>>"$LOGFILE"
 ansible-playbook configure.yml --tags containers &>>"$LOGFILE"
 if [ "$?" -eq 0 ];then
   printf "${GREEN}%s${NC}\n" "OK"

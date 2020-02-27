@@ -1,3 +1,134 @@
+Repo ID:   rhel-7-server-optional-beta-rpms
+Failed to set locale, defaulting to C
+Loaded plugins: product-id, search-disabled-repos, subscription-manager
+Examining /var/tmp/yum-root-JMSXFf/latest-rsawaroha-release.rpm: rsawaroha-release-1-1.noarch
+/var/tmp/yum-root-JMSXFf/latest-rsawaroha-release.rpm: does not update installed package.
+Error: Nothing to do
+[WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "ansible_facts": {
+        "pkg_mgr": "yum"
+    },
+    "changed": false,
+    "changes": {
+        "installed": [],
+        "updated": []
+    },
+    "msg": "",
+    "obsoletes": {
+        "iwl7265-firmware": {
+            "dist": "noarch",
+            "repo": "@anaconda/7.7",
+            "version": "22.0.7.0-72.el7"
+        }
+    },
+    "rc": 0,
+    "results": [
+        "All packages providing rhsecapi are up to date",
+        ""
+    ]
+}
+[WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "changed": false,
+    "cmd": [
+        "/usr/bin/pip3",
+        "install",
+        "pika"
+    ],
+    "name": [
+        "pika"
+    ],
+    "requirements": null,
+    "state": "present",
+    "stderr": "WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.\n",
+    "stderr_lines": [
+        "WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead."
+    ],
+    "stdout": "Requirement already satisfied: pika in /usr/local/lib/python3.6/site-packages\n",
+    "stdout_lines": [
+        "Requirement already satisfied: pika in /usr/local/lib/python3.6/site-packages"
+    ],
+    "version": null,
+    "virtualenv": null
+}
+GNU Wget 1.14 built on linux-gnu.
+
++digest +https +ipv6 +iri +large-file +nls +ntlm +opie +ssl/openssl 
+
+Wgetrc: 
+    /etc/wgetrc (system)
+Locale: /usr/share/locale 
+Compile: gcc -DHAVE_CONFIG_H -DSYSTEM_WGETRC="/etc/wgetrc" 
+    -DLOCALEDIR="/usr/share/locale" -I. -I../lib -I../lib -O2 -g -pipe 
+    -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong 
+    --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic 
+Link: gcc -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions 
+    -fstack-protector-strong --param=ssp-buffer-size=4 
+    -grecord-gcc-switches -m64 -mtune=generic -lssl -lcrypto 
+    /usr/lib64/libssl.so /usr/lib64/libcrypto.so /usr/lib64/libz.so 
+    -ldl -lz -lz -lidn -luuid -lpcre ftp-opie.o openssl.o http-ntlm.o 
+    ../lib/libgnu.a 
+
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+<http://www.gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Originally written by Hrvoje Niksic <hniksic@xemacs.org>.
+Please send bug reports and questions to <bug-wget@gnu.org>.
+curl 7.29.0 (x86_64-redhat-linux-gnu) libcurl/7.29.0 NSS/3.44 zlib/1.2.7 libidn/1.28 libssh2/1.4.3
+Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp scp sftp smtp smtps telnet tftp 
+Features: AsynchDNS GSS-Negotiate IDN IPv6 Largefile NTLM NTLM_WB SSL libz unix-sockets 
+rsync  version 3.1.2  protocol version 31
+Copyright (C) 1996-2015 by Andrew Tridgell, Wayne Davison, and others.
+Web site: http://rsync.samba.org/
+Capabilities:
+    64-bit files, 64-bit inums, 64-bit timestamps, 64-bit long ints,
+    socketpairs, hardlinks, symlinks, IPv6, batchfiles, inplace,
+    append, ACLs, xattrs, iconv, symtimes, prealloc
+
+rsync comes with ABSOLUTELY NO WARRANTY.  This is free software, and you
+are welcome to redistribute it under certain conditions.  See the GNU
+General Public Licence for details.
+gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+RPM version 4.11.3
+ansible 2.9.5
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.6/site-packages/ansible
+  executable location = /usr/local/bin/ansible
+  python version = 3.6.8 (default, Sep 26 2019, 11:57:09) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
+Python 2.7.5
+Failed to set locale, defaulting to C
+yumdownloader - 1.0 (yum - 3.4.3)
+createrepo 0.9.9
+jq-1.6
+Docker version 1.13.1, build cccb291/1.13.1
+pip 8.1.2 from /usr/lib/python2.7/site-packages (python 2.7)
+pip 9.0.3 from /usr/lib/python3.6/site-packages (python 3.6)
+[WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "append": false,
+    "changed": false,
+    "comment": "",
+    "group": 1000,
+    "groups": "dockerroot",
+    "home": "/home/wakausr",
+    "move_home": false,
+    "name": "wakausr",
+    "shell": "/bin/bash",
+    "ssh_fingerprint": "2048 SHA256:HPYe27PDFPyCzAunSgL9PbmBX22d3YBy885bQ8EKhSc ansible-generated on sys77 (RSA)",
+    "ssh_key_file": "/home/wakausr/.ssh/id_rsa",
+    "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBgJqw87/eSt6gUT29wvtYosKHCz97wViUrqyS597P0k9qsLapmhjoMw1wcJ+rJ5vgzC45MzBXbBQya5RrwXp6kRgeGvnREppRWBO7gwuXr+1rZDdWlsUBrYx/BC6s5+pb4W/efJ9sxOd08B2KeQYqGL9h9EcT5/nszWC8rWM+wpkGZqdjH/L73Xe7lMtWNBnHa7K6/V4k4wUyxw1EfPuyM6bLq+cZd+3LIn2iSyP8NK+dNcEc0dLEui3SaPVqBZGIXr/mIKmgfDXBWpXwUQA/Q2k1SF/Dw9q5TOfgiLHsN+KDHZStwy6tNAJEkoso0BuB341Ge+uXY2fmRNLQ9G25 ansible-generated on sys77",
+    "state": "present",
+    "uid": 1000
+}
 [WARNING]: No inventory was parsed, only implicit localhost is available
 localhost | SUCCESS => {
     "changed": false,
@@ -13,6 +144,29 @@ localhost | SUCCESS => {
     "uid": 0
 }
 [WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "backup": "",
+    "changed": false,
+    "msg": ""
+}
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [localhost] **************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [mount the base media for rhel6] *****************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [mount the base media for rhel7] *****************************************************************************************************************************************************************************
+ok: [localhost]
+
+PLAY RECAP ********************************************************************************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
 PLAY [localhost] **************************************************************************************************************************************************************************************************
@@ -26,7 +180,7 @@ changed: [localhost]
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.fz3BAg
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.vzyxi1
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd /root/rpmbuild/BUILD
@@ -38,14 +192,14 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.fz3BAg
 + cd wakapp-client-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.qaSdG3
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.lR3EjW
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0
 + make
 gcc -o wakapp-client wakapp-client.c
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.z0KUPQ
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.tBdJsR
 + umask 022
 + cd /root/rpmbuild/BUILD
 + '[' /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64 '!=' / ']'
@@ -83,7 +237,7 @@ Checking for unpackaged file(s): /usr/lib/rpm/check-files /root/rpmbuild/BUILDRO
 Wrote: /root/rpmbuild/SRPMS/wakapp-client-1.0-1.el7.src.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-1.0-1.el7.x86_64.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-debuginfo-1.0-1.el7.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.RmuhG2
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.HiwRKz
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0
@@ -101,6 +255,7 @@ TASK [Create scan_results & messages directory] ********************************
 ok: [localhost] => (item=bin)
 ok: [localhost] => (item=scan_results)
 ok: [localhost] => (item=messages)
+ok: [localhost] => (item=logs)
 
 TASK [copy files to wakausr home directory] ***********************************************************************************************************************************************************************
 changed: [localhost]
@@ -110,6 +265,20 @@ changed: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [localhost] **************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [start & enable docker] **************************************************************************************************************************************************************************************
+ok: [localhost]
+
+PLAY RECAP ********************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -133,20 +302,6 @@ ok: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-[WARNING]: No inventory was parsed, only implicit localhost is available
-[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
-
-PLAY [localhost] **************************************************************************************************************************************************************************************************
-
-TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
-ok: [localhost]
-
-TASK [start & enable docker] **************************************************************************************************************************************************************************************
-ok: [localhost]
-
-PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
