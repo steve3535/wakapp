@@ -5,9 +5,9 @@ import os
 
 f = open("./fetch_main.log",'a')
 #sys.stdout = f
-#sys.stderr = f
+sys.stderr = f
 
-message = ' '.join(sys.argv[1:]) or 'Hello World!'
+message = ' '.join(sys.argv[1:]) or '---'
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()

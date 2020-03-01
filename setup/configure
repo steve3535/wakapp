@@ -161,7 +161,7 @@ printf "${GREEN}%s${NC}\n" "OK"
 #WAKAUSR PYTHON 3 SYM LINK
 #rm -f /home/wakausr/bin/python &>/dev/null
 #ln -sf "$py3_path" /home/wakausr/bin/python &>>"$LOGFILE"
-ansible localhost -m lineinfile -a 'regexp="PATH=" path="/home/wakausr/.bash_profile" line="PATH=$HOME/bin/:$PATH:$HOME/.local/bin"' &>>"$LOGFILE"
+ansible localhost -m lineinfile -a 'regexp="PATH=" path="/home/wakausr/.bash_profile" line="PATH=$PATH:$HOME/bin:$HOME/.local/bin"' &>>"$LOGFILE"
 
 #printf "\n${YELLOW}%-36s${NC}\n" " Recommendation: Set wakapp admin user python library to version 3"
 

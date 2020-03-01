@@ -46,14 +46,14 @@ while true;do
 
     #retrieve rabbitmq ip add                                                                            
     echo -e "${BLUE}[-] Retrieving Queue IP ...${NC}"                                                                       
-    rabbit_ip=$(docker inspect rabbitmq | jq '.[].NetworkSettings.IPAddress' | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g')
+    rabbit_ip=$(docker inspect myrabbit | jq '.[].NetworkSettings.IPAddress' | sed 's/\x1b\[[0-9;]*m"//g;s/\"//g')
 
     #close the sockets to kill the workers(consumers)                                                    
 
     echo -e "${GREEN}[*] Closing channels ...${NC}"                                                                        
     while read line;do
       echo "Socket shutdown ..." >> "$HOME"/bin/fetch_main.log 2>&1
-      docker run docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line"
+      docker run docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line" &>/dev/null
       done < "$HOME"/bin/worker_main_id
     echo         
     echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"

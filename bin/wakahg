@@ -274,7 +274,7 @@
      echo "error: $1 : group not found"
      exit 1
    else
-     nth=50
+     nth=16
      group="$1"
      echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
      $HOME/bin/fetch_pkgs "$group" "$nth"
