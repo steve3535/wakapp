@@ -180,7 +180,7 @@ changed: [localhost]
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.vzyxi1
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.OkoWL3
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd /root/rpmbuild/BUILD
@@ -192,14 +192,14 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.vzyxi1
 + cd wakapp-client-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.lR3EjW
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.PtrBqg
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0
-+ make
++ make -j4
 gcc -o wakapp-client wakapp-client.c
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.tBdJsR
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.gQNrat
 + umask 022
 + cd /root/rpmbuild/BUILD
 + '[' /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64 '!=' / ']'
@@ -237,7 +237,7 @@ Checking for unpackaged file(s): /usr/lib/rpm/check-files /root/rpmbuild/BUILDRO
 Wrote: /root/rpmbuild/SRPMS/wakapp-client-1.0-1.el7.src.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-1.0-1.el7.x86_64.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-debuginfo-1.0-1.el7.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.HiwRKz
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.ieWCDj
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0

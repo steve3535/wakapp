@@ -35,8 +35,8 @@ def data_handler(ch, method, properties,body):
 
 def main():
  f = open("./fetch_main.log",'a')
- sys.stdout = f
- sys.stderr = f
+ #sys.stdout = f
+ #sys.stderr = f
  pid=os.getpid()
  dirname="/var/cache/yum/x86_64/7Server/stream7/{}".format(pid)
  connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))

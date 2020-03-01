@@ -31,10 +31,10 @@ cp /root/rpmbuild/SOURCES/wakapp-client-1.0/wakapp.repo %{buildroot}/etc/yum.rep
 
 %postun
 userdel -r wakausr >/dev/null 2>&1
-sed -i 's/wakausr.*//g' /etc/sudoers 2>&1>/dev/null
-#rm -rf /usr/lib/wakapp
+sed -i '/wakausr/d' /etc/sudoers 2>&1>/dev/null
 rm -f /etc/yum.repos.d/wakapp.repo
 rm -f /etc/ansible/facts.d/setuphost.fact
+rm -f /etc/sudoers.d/wakausr
 
 %files
 %{_bindir}/%{name}

@@ -2,23 +2,23 @@
 name=stream7
 gpgcheck=0
 enabled=0
-baseurl=http://rhel76:8888/stream7
+baseurl=http://wakasrv-1:8888/stream7
 
 [wrepo-media7]
 name=media7
 gpgcheck=0
 enabled=0
-baseurl=http://rhel76:8888/media7
+baseurl=http://wakasrv-1:8888/media7
 
 [wrepo-stream6]
 name=stream6
 gpgcheck=0
 enabled=0
-baseurl=http://rhel76:8888/stream6
+baseurl=http://wakasrv-1:8888/stream6
 
 [wrepo-media6]
 name=media6
 gpgcheck=0
 enabled=0
-baseurl=http://rhel76:8888/media6
+baseurl=http://wakasrv-1:8888/media6
 

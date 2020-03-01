@@ -2274,3 +2274,1086 @@ Socket shutdown ...
 Socket shutdown ...
 Socket shutdown ...
 Socket shutdown ...
+Sun Mar 1 00:10:53 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Sun Mar 1 14:34:27 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Sun Mar 1 14:48:09 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] c12feedbeafd917df090fd3d1854902b8af7e955fb543a4a302e829532c64b4f
+ [X] Done
+ [x] Received 'libtasn1 libuser libutempter libuuid libverto'
+ [x] f2bdc80b9dcb857e6abaee05ad1fe714a90b9d94dbf1fe0dbad1909e7752ef33
+ [X] Done
+ [x] Received 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] d00bec6c0f164d7df70569198973ab1c165a0db2cb1d2152197719ab24928758
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] b5888f66d35cf4038711d2c469e5a13c5bde6c5db153fb3f6b61109b76e1ba2b
+ [X] Done
+ [x] Received 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] 2ba83f4978673c58d68fcaadd68eca5c12e4e642e7e6350df78c02e78deb5530
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'groff-base gsm gzip hardlink info'
+ [x] eb28a9a46c158f0bde1f59b9d11e0c71cfc5e65f155b186539926d669c703776
+ [X] Done
+ [x] Received 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] 2c8177eff56d747838773ea4ec39722c91ffda2c706e9b18371cc23521292e3f
+ [X] Done
+ [x] Received 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] cdd6a80b4a7c0e3faae2282e79ad88301cd5ff3ffc504d4ef2d5680255bb5670
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] 7b2947224d448638cdaf414e72561462e6d31b3bdb62f11368a6d1768076db6f
+ [X] Done
+ [x] Received 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] df730965702cd413b60e32302ef23e2a602cb154dc0be37dbda752ad341dc57f
+ [X] Done
+ [x] Received 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] 64e9ba29bd835456157fcc57b8257b3b019d0fb51843a76a4f76156f86e42c52
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'less libacl libasyncns libattr libblkid'
+ [x] 210e70f7f878fc3b5d5d8cca30a5875bd8bc00a75f92f5429121333a6256ac23
+ [X] Done
+ [x] Received 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] 8f1558deffe6fc409e1cdb77bb599f01743650af963ff461ce3fc7346249046a
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] 39237b30be327e41e5f05b7c0a3a0a0ea8abebf1ed94707324d00058c818156e
+ [X] Done
+ [x] Received 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] 9aa8641c08f9a03f9f730878b5659c1df8b3da03732277176a0879ff0e85951c
+ [X] Done
+ [x] Received 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] 66a20dbbfef72c16e77160ffcd63bd5d26934111be12475f5117a79adb1f4349
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'gawk GConf2 gdbm giflib git'
+ [x] 7b1a2972db70ec31f081a206530f82125ceff840646d7e2372624c3153afcd50
+ [X] Done
+ [x] Received 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] 5a6dd29a254b8b05f523cbbc07cb6a2bc3df7aaf456f15352ceb35e683a93f0d
+ [X] Done
+ [x] Received 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] c7c2236a5eae281db858e644302c16690410381cf8a65f754939c3eec7ab4068
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] 342486c7c9867d429f6a871813dd684eea08dde95b16550ef44ed09c5c48d563
+ [X] Done
+ [x] Received 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] 8a75405a7e3ed82a71f819e78b20144f040f7230917b625d92c45a453a3b0b20
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] 52185fd81cc235727b709a552658f22c5c6758e24357805c3d6395eaafd02577
+ [X] Done
+ [x] Received 'libxslt libXtst lksctp-tools lua lz4'
+ [x] 2cccc8f0d174133237f5465f44ab6b3bf5422f1e3c7b006e5f8c1bc5ae87531e
+ [X] Done
+ [x] Received 'rpm rpm-libs rsync sed setup'
+ [x] e5137f020fcaa43e99380426714e6c51946c049f200e7e24491ad303c57a1d27
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] 4dac080868253a65fb9da48244dd6c462f90490a6e1e4862cfc1f61f2f04067f
+ [X] Done
+ [x] Received 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] 677208792e4c2a2b3724ea473eaebc625250a8343784500d208f1330960f6a47
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] fe26154ccbf2bc4f92f65514303db03b8d8ac6b597f7fd2dd8204a581f42bd1f
+ [X] Done
+ [x] Received 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] 0448628a9ab47a7f0b664bb4f6823b78a14f8d83f5f45843a83bdb77aa7f0218
+ [X] Done
+ [x] Received 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] d300c8d3605841673a3ad0e37f45c9500a00a5df550f7141e45beec20efd9375
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] c390bff04e979c7930527fc5425d9c05539a763380f9d15328a723d4a9420f50
+ [X] Done
+ [x] Received 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] 7290e5b5479ef02e0b1eb8a2529e62679f158e0e777efb2bff5425f71d50065d
+ [X] Done
+ [x] Received 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] 52c33b90c48faa1b5fb6112b1600275b5d0168cbcc36587edc24ad84fbccf11b
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] 966f5d54f093310d4d648d0bf8439a7628a6181985ced25c55fe9f2cf2886043
+ [X] Done
+ [x] Received 'libXext libXfont libXi libxml2 libXrender'
+ [x] e8a7b8768a7c8b563307b88f63c43e757051be3d1a44777c9c0635cf37110148
+ [X] Done
+ [x] Received 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] f49d480d325f8a5bd15e73c131250f6b75da51b26dfa15306f3c88e9a7becf1c
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] 13af1cda7500342010ca3808e7f9243cbe226b46f883e368abdf8e3866e5e663
+ [X] Done
+ [x] Received 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] 9c38d89b2ae2033159c6a9582669cf2101a1b5b612107c6d1f27c98a74dc8208
+ [X] Done
+ [x] Received 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] 491eb432b265d97f25f1369f05f17b7a455e55b5bc2c231f795619337b8cfa0b
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] 5455bee5b752bb4df6fb72c764dd78660103262497a36f07c6970fc66842b950
+ [X] Done
+ [x] Received 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] 372fb2227b8cff323ed3692897a1d81cd4d4e56a9955345da7cf2ad9f6f50617
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'glib2 glibc glibc-common gmp grep'
+ [x] 56229a8d4958bf7acbeff27085adef5d2c1364489d90598426a1bc5c136271d6
+ [X] Done
+ [x] Received 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] c258ec5895946904eac071af507ce923e36c21685f269955ca2c9d0d7fe1636c
+ [X] Done
+ [x] Received 'xz-libs zlib'
+ [x] b6f6079313b9952f1f75fe5e1db3514fb0cc745431c4680d86064365434cb044
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Sun Mar 1 14:52:49 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] 9f5fa42bcb7031176c73e4ca07f3a51b1a17e19d903c8836b1928f6029b14026
+ [X] Done
+ [x] Received 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] 1f0208170375aa211751c43571c0f757a7effa88fb6f4a5d5a5377f2e55b7404
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] 4719fcd4c4a4237b9890e15a6f77d931afe634bd606afb4502a0a29995d95364
+ [X] Done
+ [x] Received 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] b125018292b93a7959ba2ac4e48f29749531ac89c440d65d694351a94d11bb06
+ [X] Done
+ [x] Received 'rpm rpm-libs rsync sed setup'
+ [x] e172d33e01ffe05da93b08f87a52926c5f6e9f1ff7409404b97ef435c4470f5f
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] d6c92fc1ed8bca42d473b357677e883fb984883589bffd4562acda5c4fd78c69
+ [X] Done
+ [x] Received 'libtasn1 libuser libutempter libuuid libverto'
+ [x] 12baf76b3d17af5c46a20956fb3c832b043bcff132214c4789b0ef4e6e185703
+ [X] Done
+ [x] Received 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] f3b0c061ce177f75e633a206e1afb420d8b4e09a3a469116b1b1434dd92c1846
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'groff-base gsm gzip hardlink info'
+ [x] 14071813bb71d202eaab8670160853294b4ec1eb51731e6baff9e5811a972a47
+ [X] Done
+ [x] Received 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] 22c1072f1296f07edf5223162ce57d1a3f049668e290bc465ab966fbd10edd73
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'less libacl libasyncns libattr libblkid'
+ [x] 9dc5008998c2d74dc3581710d3cb9a65a6a44bcd068da0492d6133fb7033485a
+ [X] Done
+ [x] Received 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] 0371fa1eb985d73f4c7ef793b45cbd7cf9a397ae3cdfd76daffb290254568d70
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] 43f21a912f94af6f061d2da9a76a8252ce440bd4736e9e35389b33c6d4198e6d
+ [X] Done
+ [x] Received 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] 1afc98fba6142a0f0edef3872b8aff476771e6861457155613e86d0fed22e641
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] 0400b9d6342e9a4b92abc2106a90da587a05c329e2a6ed54440c516562c91204
+ [X] Done
+ [x] Received 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] 51e5fd27e18bc344c657fa595956b72fedeb437138fc637dbf604b1814f43a1d
+ [X] Done
+ [x] Received 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] 3ce4524197befb7f5f6672fe3a2c2e504b74170626ccd71f79dd935fac4a6f4a
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] f72e4f9b8a5e0823563a456bb18e1001f7ef8c2cbcbc251e2db6257881b1fe23
+ [X] Done
+ [x] Received 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] 44a21815d570d6498a27c5504ee8db34116b3f08615a3962d7ac82b27eb54a61
+ [X] Done
+ [x] Received 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] b0d50b11e9552a1e4ac5c23d331cda29d012f727fc2a285fe02301db52c50409
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] 307bbf4a1568195eef4122e0d438700625311c785b25b11ad31a9a38d4757f01
+ [X] Done
+ [x] Received 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] 4c661057f1d3df354bdbfae827b7fb78e59be6145b35434ec55f0ee7430e9d46
+ [X] Done
+ [x] Received 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] c8a31451bb36832cdfe3609457ae5456c9df70caef9e693c649a795e9b23bf79
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'gawk GConf2 gdbm giflib git'
+ [x] 537fe1ad4a320f7da8d1809e3993c4447b0c661dae280e46d5334a5c9bd10a18
+ [X] Done
+ [x] Received 'libxslt libXtst lksctp-tools lua lz4'
+ [x] dc24fcfbf9237713e1be952a9628a91fc3c84a67a4ad59434f6683a4d8cc801d
+ [X] Done
+ [x] Received 'xz-libs zlib'
+ [x] 33014d126b816c28ff23f753c015ff4869eb347e521fd2285bad9323b2a5b045
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] ce30bf4bb9af942375748e4ec0df1d3de27b6d1b11feb12e3906a5067ffab116
+ [X] Done
+ [x] Received 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] 387686e8440f4656e47cf6e4eba5b22dcd9bc5015fdea0244e3b98c24f8a6221
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] b978fa55e592942ecaba56891915364167e84a5bd41041626547476479a01c5c
+ [X] Done
+ [x] Received 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] 31ead4f05dca285bac63b00a3765435a8898d489271bd256440ff78a9faf5874
+ [X] Done
+ [x] Received 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] 751e8ae0fb60fd61ad01966f0804ce0eddd70faaf736f40228770e10198c090f
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] 37c1647b2d4ad0497b34d8c3b67d8c758951c276216f001de9585043d4c24e1d
+ [X] Done
+ [x] Received 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] 345c16a91fa0364cddefc09fa959266534dd8880bb4f85776587456ac33b6652
+ [X] Done
+ [x] Received 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] bb0f318d4294bc0aa2551df384b6ca56aaecf611bd6a2b5cbb6de53293ca9d2c
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] d15e71d892a35803b8faab5f237653642589d76249966174a093d1a4bd2de72c
+ [X] Done
+ [x] Received 'libXext libXfont libXi libxml2 libXrender'
+ [x] 43df5021bca08e75fb8f6641ead0277063d2e217fceeef424459cb10143a007c
+ [X] Done
+ [x] Received 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] 820303f5be637c4e5ce85612350b6f23f00e2e636223933b17553f52bfe4de37
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'glib2 glibc glibc-common gmp grep'
+ [x] 286d85182e4a48643e43fcf8a0cd60687facccdb504bc63499eac46e0b662271
+ [X] Done
+ [x] Received 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] 2c578420330f3a6ad097c7860c96363d0e4f60d8beb791733fef71d595f7f672
+ [X] Done
+ [x] Received 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] f7cd0be71e063b642cef1e0d12c6561d897e05a372eaac1cf89308908cc6e93c
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Socket shutdown ...
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] 596d583a8c66772646a851883bc1104db88c49add3da2c1687d8aa0b50c0b47b
+ [X] Done
+ [x] Received 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] 85f9c0009c50505f37389a11c278075b70944fe5847f3d135a1714b9ddb1485e
+ [X] Done
+ [x] Received 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] 624865fdd7de326c9d3e0bba7e62f31255e06a0ecfa7fe284121e944eaf84351
+ [X] Done
+Traceback (most recent call last):
+  File "/home/wakausr/bin/worker.py", line 55, in <module>
+    main()
+  File "/home/wakausr/bin/worker.py", line 49, in main
+    channel.start_consuming()
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 1866, in start_consuming
+    self._process_data_events(time_limit=None)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 2027, in _process_data_events
+    self.connection.process_data_events(time_limit=time_limit)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 825, in process_data_events
+    self._flush_output(common_terminator)
+  File "/usr/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 522, in _flush_output
+    raise self._closed_result.value.error
+pika.exceptions.ConnectionClosedByBroker: (320, 'CONNECTION_FORCED - Closed via management plugin')
+Sun Mar 1 15:16:02 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+Sun Mar 1 15:27:01 GMT 2020
+ [x] Sent 'acl alsa-lib audit-libs avahi-libs basesystem'
+ [x] Sent 'bash binutils bzip2-libs ca-certificates chkconfig'
+ [x] Sent 'copy-jdk-configs coreutils cpio cracklib cracklib-dicts'
+ [x] Sent 'cryptsetup-libs cups-libs curl cyrus-sasl-lib dbus'
+ [x] Sent 'dbus-glib dbus-libs dejavu-fonts-common dejavu-sans-fonts device-mapper'
+ [x] Sent 'device-mapper-libs diffutils dracut elfutils-default-yama-scope elfutils-libelf'
+ [x] Sent 'elfutils-libs expat filesystem findutils fipscheck'
+ [x] Sent 'fipscheck-lib flac-libs fontconfig fontpackages-filesystem freetype'
+ [x] Sent 'gawk GConf2 gdbm giflib git'
+ [x] Sent 'glib2 glibc glibc-common gmp grep'
+ [x] Sent 'groff-base gsm gzip hardlink info'
+ [x] Sent 'java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-11-openjdk-headless-debug java-1.6.0-openjdk'
+ [x] Sent 'java-1.7.0-openjdk-headless java-1.8.0-openjdk-headless java-1.8.0-openjdk-headless-debug javapackages-tools json-c'
+ [x] Sent 'keyutils-libs kmod kmod-libs kpartx krb5-libs'
+ [x] Sent 'less libacl libasyncns libattr libblkid'
+ [x] Sent 'libcap libcap-ng libcom_err libcurl libdb'
+ [x] Sent 'libdb-utils libedit libffi libfontenc libgcc'
+ [x] Sent 'libgcrypt libgpg-error libgudev1 libICE libidn'
+ [x] Sent 'libjpeg-turbo libmount libogg libpng libpwquality'
+ [x] Sent 'libselinux libselinux-python libselinux-utils libsemanage libsepol'
+ [x] Sent 'libSM libsmartcols libsndfile libssh2 libstdc++'
+ [x] Sent 'libtasn1 libuser libutempter libuuid libverto'
+ [x] Sent 'libvorbis libX11 libX11-common libXau libxcb'
+ [x] Sent 'libXext libXfont libXi libxml2 libXrender'
+ [x] Sent 'libxslt libXtst lksctp-tools lua lz4'
+ [x] Sent 'mozjs17 ncurses ncurses-base ncurses-libs nspr'
+ [x] Sent 'nss nss-pem nss-softokn nss-softokn-freebl nss-sysinit'
+ [x] Sent 'nss-tools nss-util openldap openssh openssh-clients'
+ [x] Sent 'openssl-libs p11-kit p11-kit-trust pam pcre'
+ [x] Sent 'pcsc-lite-libs perl perl-Carp perl-constant perl-Encode'
+ [x] Sent 'perl-Error perl-Exporter perl-File-Path perl-File-Temp perl-Filter'
+ [x] Sent 'perl-Getopt-Long perl-Git perl-HTTP-Tiny perl-libs perl-macros'
+ [x] Sent 'perl-parent perl-PathTools perl-Pod-Escapes perl-podlators perl-Pod-Perldoc'
+ [x] Sent 'perl-Pod-Simple perl-Pod-Usage perl-Scalar-List-Utils perl-Socket perl-Storable'
+ [x] Sent 'perl-TermReadKey perl-Text-ParseWords perl-threads perl-threads-shared perl-Time-HiRes'
+ [x] Sent 'perl-Time-Local pkgconfig polkit polkit-pkla-compat popt'
+ [x] Sent 'procps-ng psmisc pulseaudio-libs python python-javapackages'
+ [x] Sent 'python-libs python-lxml qrencode-libs readline redhat-release-server'
+ [x] Sent 'rpm rpm-libs rsync sed setup'
+ [x] Sent 'shadow-utils shared-mime-info sqlite systemd systemd-libs'
+ [x] Sent 'systemd-sysv tcp_wrappers-libs ttmkfdir tzdata tzdata-java'
+ [x] Sent 'ustr util-linux xorg-x11-fonts-Type1 xorg-x11-font-utils xz'
+ [x] Sent 'xz-libs zlib'
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
+Socket shutdown ...
