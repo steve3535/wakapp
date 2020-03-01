@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+import pika
+import docker
+import os
+import sys 
+import subprocess
+
+f = open("./fetch_main.log",'a')
+#sys.stdout = f
+#sys.stderr = f
+
+pid=os.getpid()
+dirname="/var/cache/yum/x86_64/7Server/stream7/{}".format(pid)
+
+connection = pika.BlockingConnection(
+                                      pika.ConnectionParameters(host='localhost')
+                                    )
+channel = connection.channel()
+
+channel.queue_declare(queue='yum')
+
+def callback(ch, method, properties, body):
+ print(" [x] Received %r" % body)
+ client = docker.from_env()
+ container = client.containers.run("docker.io/nigelfoster/rhel-proxy:7c",body,
+                        volumes={'/etc/yum.repos.d/': {'bind':'/etc/yum.repos.d/', 'mode':'ro'},
+                                 '/etc/pki/entitlement/': {'bind':'/etc/pki/entitlement/','mode':'ro'},
+                                 '/media7/': {'bind':'/media7/','mode':'ro'},
+                                 '/media6/': {'bind':'/media6/','mode':'ro'},
+                                 '/var/cache/yum/x86_64/7Server/stream7/': {'bind':'/var/cache/yum/x86_64/7Server/','mode':'rw'}},
+                                 detach=True,remove=False)
+ print(" [x] %s" % container.id )
+ ch.basic_ack(delivery_tag = method.delivery_tag)
+ while(True):
+   container.reload()
+   if container.status == 'exited' :
+      break
+ print(" [X] Done")
+ #ch.basic_ack(delivery_tag = method.delivery_tag)
+
+channel.basic_qos(prefetch_count=1) 
+channel.basic_consume(queue='yum', on_message_callback=callback)
+print(' [*] Waiting for messages. To exit press CTRL+C')
+channel.start_consuming()
