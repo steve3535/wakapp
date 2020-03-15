@@ -152,10 +152,6 @@ printf "%-36s%s" " . Create wakapp admin user " "$TIRET "
 ansible localhost -m user -a 'name=wakausr shell=/bin/bash generate_ssh_key=yes groups=dockerroot' &>>"$LOGFILE"
 ansible localhost -m copy -a 'content="wakausr ALL=(ALL) NOPASSWD:ALL\n" dest=/etc/sudoers.d/wakausr' &>>"$LOGFILE"
 
-#WAKAUSR EXTRA PERMISSIONS
-setfacl -R -m u:wakausr:rwx /var/cache/yum
-setfacl -R -m d:u:wakausr:rwx /var/cache/yum
-
 printf "${GREEN}%s${NC}\n" "OK"
 
 #WAKAUSR PYTHON 3 SYM LINK
@@ -331,3 +327,4 @@ else
 fi
 
 echo
+

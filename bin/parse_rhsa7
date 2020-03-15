@@ -74,6 +74,12 @@ cat /dev/null > $HOME/yupdate
 echo "#!/bin/bash" >> $HOME/yupdate
 echo "sudo yum --enablerepo=wrepo*7 clean all | tee yupdate.log" >> $HOME/yupdate
 echo "sudo yum --enablerepo=wrepo*7 repolist all | tee -a yupdate.log" >> $HOME/yupdate
-echo "sudo yum --disablerepo=* --enablerepo=wrepo*7 -y update \$(cat resultat-$(hostname | cut -d. -f1).txt) | tee -a yupdate.log" >> $HOME/yupdate
+echo "sudo yum --disablerepo=* --enablerepo=wrepo*7 -y update \$(cat resultat-$(hostname | cut -d. -f1).txt) &>>./yupdate.log" >> $HOME/yupdate
+echo "if [ "\$?" -ne 0 ];then" >> $HOME/yupdate
+echo "sudo yum --disablerepo=* --enablerepo=wrepo*7 -y update \$(cat resultat-$(hostname | cut -d. -f1).txt) --skip-broken &>>./yupdate.log" >> $HOME/yupdate
+echo "fi" >> $HOME/yupdate
+echo "if [ "\$?" -ne 0 ];then" >> $HOME/yupdate
+echo "sudo yum --disablerepo=* --enablerepo=wrepo*7 -y update \$(cat resultat-$(hostname | cut -d. -f1).txt)  --skip-broken --setopt=protected_multilib=false &>>./yupdate.log" >> $HOME/yupdate
+echo "fi" >> $HOME/yupdate
 chmod +x $HOME/yupdate
 

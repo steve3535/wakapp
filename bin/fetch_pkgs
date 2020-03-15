@@ -17,9 +17,12 @@ split -l 5 $HOME/scan_results/rh7/"$group"/"$group"_pkgs.txt $HOME/messages/"$gr
 $HOME/bin/redis-bash-cli set task_flag 1
 echo -e "${GREEN}[-] Submitting tasks ...${NC}"
 for req in $(ls $HOME/messages/"$group"_*);do  
+#for req in baobab glibc nmap;do  
   python $HOME/bin/new_task.py $(cat "$req") | tee -a $HOME/bin/fetch_main.log 
+
+  #python $HOME/bin/new_task.py "$req" | tee -a $HOME/bin/fetch_main.log 
 done                                    
-$HOME/bin/redis-bash-cli set task_flag 0
+#$HOME/bin/redis-bash-cli set task_flag 0
 sleep 5
 
 #Start N workers
@@ -30,3 +33,4 @@ for i in $(seq 1 $nw);do
 done
 
 
+$HOME/bin/redis-bash-cli set task_flag 0

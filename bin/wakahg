@@ -286,6 +286,8 @@
    fi
    echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
    echo -e "\n${B_RED}[!] RESTART OF THE HOSTS IS REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"
+   rm -f $HOME/messages/"$group"*
+   
    exit 0
  }
 

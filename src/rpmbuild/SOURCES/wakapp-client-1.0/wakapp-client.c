@@ -8,7 +8,8 @@
       printf("\nEA01: Error: waka user seems to be present from a previous installation; kindly remove it with 'userdel -r wakausr' and reinstall the agent package\n");
       return; 
     }
-    ret=system("useradd wakausr >/dev/null 2>&1 && mkdir /home/wakausr/.ssh && ssh-keygen -f /home/wakausr/.ssh/id_rsa -P '' >/dev/null 2>&1"); 
+    system("groupadd wakausr &>/dev/null");
+    ret=system("useradd wakausr -g wakausr >/dev/null 2>&1 && mkdir /home/wakausr/.ssh && ssh-keygen -f /home/wakausr/.ssh/id_rsa -P '' >/dev/null 2>&1"); 
     if (ret != 0)
       printf("\nEA02: An error occured while installing the agent\n");
     else {

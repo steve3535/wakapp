@@ -19,6 +19,7 @@ def process_download(body):
  while(True):
   container.reload()
   if container.status == 'exited' :
+     container.remove(force=True)
      break
 
 

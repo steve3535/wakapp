@@ -45,6 +45,19 @@
       - logs
     tags: createdir
 
+  - name: Create scan_results & messages directory
+    file:
+      path: "/var/cache/yum/x86_64/7Server/{{ item }}"
+      state: directory
+      mode: 0775
+      owner: wakausr
+      group: wakausr
+    with_items:
+      - stream7
+      - stream6
+    tags: createdir
+
+
   - name: copy files to wakausr home directory
     copy:
       src: ../bin/
