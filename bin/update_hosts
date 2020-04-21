@@ -3,11 +3,20 @@
 - hosts: "{{ HOSTS }}"
   become: true
   tasks:
+  - name: Copy generated update script
+    copy:
+       src: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/yupdate-{{ ansible_hostname }}.sh"
+       dest: /home/wakausr/yupdate.sh
+       mode: 0755
+  - name: Copy result file
+    copy:
+       src: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/resultat-{{ ansible_hostname }}.txt"
+       dest: /home/wakausr/ 
   - name: Capture current software versions to /var/log/before_patch_list
     shell: rpm -qa > /var/log/rpmlist_$(date +"%Y%m%d")
   - block:
     - name: Patching ... Please wait ... ( check yupdate.log & yum.log under /var/log on the client to monitor the progress of the task )
-      shell: /home/wakausr/yupdate
+      shell: /home/wakausr/yupdate.sh
       register: _update7
       async: 3600
       poll: 0

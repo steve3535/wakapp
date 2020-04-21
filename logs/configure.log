@@ -1,11 +1,11 @@
 Repo ID:   rhel-7-server-optional-beta-rpms
 Failed to set locale, defaulting to C
 Loaded plugins: product-id, search-disabled-repos, subscription-manager
-Examining /var/tmp/yum-root-x2Ttj4/latest-rsawaroha-release.rpm: rsawaroha-release-1-1.noarch
-/var/tmp/yum-root-x2Ttj4/latest-rsawaroha-release.rpm: does not update installed package.
+Examining /var/tmp/yum-root-aDZF1B/latest-rsawaroha-release.rpm: rsawaroha-release-1-1.noarch
+/var/tmp/yum-root-aDZF1B/latest-rsawaroha-release.rpm: does not update installed package.
 Error: Nothing to do
 [WARNING]: No inventory was parsed, only implicit localhost is available
-localhost | FAILED! => {
+localhost | CHANGED => {
     "ansible_facts": {
         "pkg_mgr": "yum"
     },
@@ -16,7 +16,7 @@ localhost | FAILED! => {
         ],
         "updated": []
     },
-    "msg": "warning: /var/cache/yum/x86_64/7Server/rsawaroha/packages/rhsecapi-1.0.1-1.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 4c4ffd02: NOKEY\nImporting GPG key 0x4C4FFD02:\n Userid     : \"Ryan Sawhill Aroha <rsaw@redhat.com>\"\n Fingerprint: bac2 74b8 9f6b 5907 b3d0 e467 fba4 72a7 4c4f fd02\n Package    : rsawaroha-release-1-1.noarch (@/latest-rsawaroha-release)\n From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-rsaw.aroha\nError unpacking rpm package python-urllib3-1.10.2-7.el7.noarch\n",
+    "msg": "",
     "obsoletes": {
         "iwl7265-firmware": {
             "dist": "noarch",
@@ -24,14 +24,14 @@ localhost | FAILED! => {
             "version": "22.0.7.0-72.el7"
         }
     },
-    "rc": 1,
+    "rc": 0,
     "results": [
-        "Loaded plugins: product-id, search-disabled-repos, subscription-manager\nResolving Dependencies\n--> Running transaction check\n---> Package rhsecapi.x86_64 0:1.0.1-1 will be installed\n--> Processing Dependency: python-requests for package: rhsecapi-1.0.1-1.x86_64\n--> Running transaction check\n---> Package python-requests.noarch 0:2.6.0-9.el7_7 will be installed\n--> Processing Dependency: python-urllib3 >= 1.10.2-1 for package: python-requests-2.6.0-9.el7_7.noarch\n--> Running transaction check\n---> Package python-urllib3.noarch 0:1.10.2-7.el7 will be installed\n--> Finished Dependency Resolution\n\nDependencies Resolved\n\n================================================================================\n Package             Arch       Version            Repository              Size\n================================================================================\nInstalling:\n rhsecapi            x86_64     1.0.1-1            rsawaroha               58 k\nInstalling for dependencies:\n python-requests     noarch     2.6.0-9.el7_7      rhel-7-server-rpms      94 k\n python-urllib3      noarch     1.10.2-7.el7       dvd                    103 k\n\nTransaction Summary\n================================================================================\nInstall  1 Package (+2 Dependent packages)\n\nTotal download size: 255 k\nInstalled size: 916 k\nDownloading packages:\nPublic key for rhsecapi-1.0.1-1.x86_64.rpm is not installed\n--------------------------------------------------------------------------------\nTotal                                              161 kB/s | 255 kB  00:01     \nRetrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rsaw.aroha\nRunning transaction check\nRunning transaction test\nTransaction test succeeded\nRunning transaction\n  Installing : python-urllib3-1.10.2-7.el7.noarch                           1/3 \nerror: unpacking of archive failed on file /usr/lib/python2.7/site-packages/urllib3/packages/ssl_match_hostname: cpio: rename\n  Installing : python-requests-2.6.0-9.el7_7.noarch                         2/3 \nerror: python-urllib3-1.10.2-7.el7.noarch: install failed\n  Installing : rhsecapi-1.0.1-1.x86_64                                      3/3 \n  Verifying  : python-requests-2.6.0-9.el7_7.noarch                         1/3 \n  Verifying  : rhsecapi-1.0.1-1.x86_64                                      2/3 \n  Verifying  : python-urllib3-1.10.2-7.el7.noarch                           3/3 \n\nInstalled:\n  rhsecapi.x86_64 0:1.0.1-1                                                     \n\nDependency Installed:\n  python-requests.noarch 0:2.6.0-9.el7_7                                        \n\nFailed:\n  python-urllib3.noarch 0:1.10.2-7.el7                                          \n\nComplete!\n"
+        "Loaded plugins: product-id, search-disabled-repos, subscription-manager\nResolving Dependencies\n--> Running transaction check\n---> Package rhsecapi.x86_64 0:1.0.1-1 will be installed\n--> Finished Dependency Resolution\n\nDependencies Resolved\n\n================================================================================\n Package           Arch            Version             Repository          Size\n================================================================================\nInstalling:\n rhsecapi          x86_64          1.0.1-1             rsawaroha           58 k\n\nTransaction Summary\n================================================================================\nInstall  1 Package\n\nTotal download size: 58 k\nInstalled size: 195 k\nDownloading packages:\nRunning transaction check\nRunning transaction test\nTransaction test succeeded\nRunning transaction\n  Installing : rhsecapi-1.0.1-1.x86_64                                      1/1 \n  Verifying  : rhsecapi-1.0.1-1.x86_64                                      1/1 \n\nInstalled:\n  rhsecapi.x86_64 0:1.0.1-1                                                     \n\nComplete!\n"
     ]
 }
 [WARNING]: No inventory was parsed, only implicit localhost is available
-localhost | CHANGED => {
-    "changed": true,
+localhost | SUCCESS => {
+    "changed": false,
     "cmd": [
         "/usr/bin/pip3",
         "install",
@@ -46,12 +46,9 @@ localhost | CHANGED => {
     "stderr_lines": [
         "WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead."
     ],
-    "stdout": "Collecting pika\n  Downloading https://files.pythonhosted.org/packages/a1/ae/8bedf0e9f1c0c5d046db3a7428a4227fe36ec1b8e25607f3c38ac9bf513c/pika-1.1.0-py2.py3-none-any.whl (148kB)\nInstalling collected packages: pika\nSuccessfully installed pika-1.1.0\n",
+    "stdout": "Requirement already satisfied: pika in /usr/local/lib/python3.6/site-packages\n",
     "stdout_lines": [
-        "Collecting pika",
-        "  Downloading https://files.pythonhosted.org/packages/a1/ae/8bedf0e9f1c0c5d046db3a7428a4227fe36ec1b8e25607f3c38ac9bf513c/pika-1.1.0-py2.py3-none-any.whl (148kB)",
-        "Installing collected packages: pika",
-        "Successfully installed pika-1.1.0"
+        "Requirement already satisfied: pika in /usr/local/lib/python3.6/site-packages"
     ],
     "version": null,
     "virtualenv": null
@@ -117,42 +114,41 @@ Docker version 1.13.1, build cccb291/1.13.1
 pip 8.1.2 from /usr/lib/python2.7/site-packages (python 2.7)
 pip 9.0.3 from /usr/lib/python3.6/site-packages (python 3.6)
 [WARNING]: No inventory was parsed, only implicit localhost is available
-localhost | CHANGED => {
-    "changed": true,
+localhost | SUCCESS => {
+    "append": false,
+    "changed": false,
     "comment": "",
-    "create_home": true,
     "group": 1000,
     "groups": "dockerroot",
     "home": "/home/wakausr",
+    "move_home": false,
     "name": "wakausr",
     "shell": "/bin/bash",
-    "ssh_fingerprint": "2048 SHA256:ELC7hTZe1O52npV9p7QXr3l4muFRMZMPd9mrEODH5uU ansible-generated on ws (RSA)",
+    "ssh_fingerprint": "2048 SHA256:sTgcDyi5yya1SjnNzuQ0BtFs4pY9pFmixY7UUHNeuHk ansible-generated on kayak (RSA)",
     "ssh_key_file": "/home/wakausr/.ssh/id_rsa",
-    "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSs84hVZM9/+vONPxDZLSEsDGWgt2V2KgyoBdQ1+kUgj270V2NZgclj91B6rO7yuPXs9B+Icg/INi/1GXTD1sj/9+MrcrLFIDC8dXNujk0IZ03n2/0xdz08K2arMCTuRN72IrjXoZOPeXBiu7GMloPJ/4CN41XbXDbk+aSXozHF7KAM3fYI0M+fJpIE1TAlpNOULOBWSubdaySLl7w81fioet02l/1h1cwPQ4s7WkXYYeEEHzOY9gYfQ8k6K+Hnv1nGcNRv362QWBJl+w2YlTDmV63QV86Hv9fFtUM1rg7MZqe3xWSt776MJCSd662fV1RCaaeHSr0pYcdZ+kaAsYb ansible-generated on ws",
+    "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCgQzNvAa+kWH21vOdENdvTJ6C0I3JXvII87QAFPUKlojZN9rSRTWmjFjSj9BokTmVXVdGK9TqfZIDt/XMeczxDwXAb1UDjCyTDEgGHrYtGKQ8SQfxxgHce7h3vpjZ5ugvManDK+R8JXGGms37IBkI3PWhtdRBlwvp2VkmdZS5CyjqajBqIU5FNDzZp84eNLEqyc31G8qsiuL2OSXW3j1NG+AS21glTEDgz4EZdmqiD9Y9hPdFcPqOTPEC1krhMj09zG3DekisBHzIvcflG+H8q2BI/UDNaJaSTDDD+Uk/PgFBKVAgu0qJh7lB1Dns9CBw0hAp6XyH10Xd8zI0Cv62J ansible-generated on kayak",
     "state": "present",
-    "system": false,
     "uid": 1000
 }
 [WARNING]: No inventory was parsed, only implicit localhost is available
-localhost | CHANGED => {
-    "changed": true,
+localhost | SUCCESS => {
+    "changed": false,
     "checksum": "78528625bdb9519370c8e92a5b0cbcc2d8338464",
     "dest": "/etc/sudoers.d/wakausr",
     "gid": 0,
     "group": "root",
-    "md5sum": "5a74b599c6bfc2ecb5b875b1eeccc1e7",
     "mode": "0644",
     "owner": "root",
+    "path": "/etc/sudoers.d/wakausr",
     "size": 31,
-    "src": "/root/.ansible/tmp/ansible-tmp-1584183336.0096443-105330646280651/source",
     "state": "file",
     "uid": 0
 }
 [WARNING]: No inventory was parsed, only implicit localhost is available
-localhost | CHANGED => {
+localhost | SUCCESS => {
     "backup": "",
-    "changed": true,
-    "msg": "line replaced"
+    "changed": false,
+    "msg": ""
 }
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -163,13 +159,13 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [mount the base media for rhel6] *****************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [mount the base media for rhel7] *****************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -185,7 +181,7 @@ changed: [localhost]
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.3zRDCr
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.VyIF0x
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd /root/rpmbuild/BUILD
@@ -197,14 +193,14 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.3zRDCr
 + cd wakapp-client-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.c8ITdH
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.cQjoy6
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0
 + make
 gcc -o wakapp-client wakapp-client.c
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.d5UR0W
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.fyTItF
 + umask 022
 + cd /root/rpmbuild/BUILD
 + '[' /root/rpmbuild/BUILDROOT/wakapp-client-1.0-1.el7.x86_64 '!=' / ']'
@@ -242,7 +238,7 @@ Checking for unpackaged file(s): /usr/lib/rpm/check-files /root/rpmbuild/BUILDRO
 Wrote: /root/rpmbuild/SRPMS/wakapp-client-1.0-1.el7.src.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-1.0-1.el7.x86_64.rpm
 Wrote: /root/rpmbuild/RPMS/x86_64/wakapp-client-debuginfo-1.0-1.el7.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.rolfAZ
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.LtaPfX
 + umask 022
 + cd /root/rpmbuild/BUILD
 + cd wakapp-client-1.0
@@ -257,10 +253,14 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [Create scan_results & messages directory] *******************************************************************************************************************************************************************
-changed: [localhost] => (item=bin)
-changed: [localhost] => (item=scan_results)
-changed: [localhost] => (item=messages)
-changed: [localhost] => (item=logs)
+ok: [localhost] => (item=bin)
+ok: [localhost] => (item=scan_results)
+ok: [localhost] => (item=messages)
+ok: [localhost] => (item=logs)
+
+TASK [Create scan_results & messages directory] *******************************************************************************************************************************************************************
+ok: [localhost] => (item=stream7)
+ok: [localhost] => (item=stream6)
 
 TASK [copy files to wakausr home directory] ***********************************************************************************************************************************************************************
 changed: [localhost]
@@ -269,7 +269,7 @@ TASK [copy files to wakausr home directory] ************************************
 changed: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -280,10 +280,10 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [start & enable docker] **************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -294,19 +294,19 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [load redis image] *******************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [load nginx image] *******************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [load rabbitmq image] ****************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [load rhel-proxy7 image] *************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -317,16 +317,16 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [create redis container] *************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [create nginx containers] ************************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 TASK [create rabbitmq containers] *********************************************************************************************************************************************************************************
-changed: [localhost]
+ok: [localhost]
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -337,11 +337,11 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [firewall rules] *********************************************************************************************************************************************************************************************
-changed: [localhost] => (item=5672/tcp)
-changed: [localhost] => (item=15672/tcp)
-changed: [localhost] => (item=8888/tcp)
-changed: [localhost] => (item=6379/tcp)
+ok: [localhost] => (item=5672/tcp)
+ok: [localhost] => (item=15672/tcp)
+ok: [localhost] => (item=8888/tcp)
+ok: [localhost] => (item=6379/tcp)
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

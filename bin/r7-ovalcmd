@@ -1,0 +1,5 @@
+#!/bin/bash
+oscap oval eval --results results-$(hostname| cut -d. -f1).xml ./Red_Hat_Enterprise_Linux_7.xml &>./r7-ovalcmd.log
+rpm -qa --qf "%{name} " >./pkgs-$(hostname| cut -d. -f1).txt
+
+

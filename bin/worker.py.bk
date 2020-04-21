@@ -15,14 +15,12 @@ def process_download(body):
                                  '/media6/': {'bind':'/media6/','mode':'ro'},
                                  '/var/cache/yum/x86_64/7Server/stream7/': {'bind':'/var/cache/yum/x86_64/7Server/','mode':'rw'}},
                                  detach=True,remove=False)
-
- #container = client.containers.run("docker.io/nigelfoster/rhel-proxy:7c",body,volumes={'/var/cache/yum/x86_64/7Server/stream7/': {'bind':'/var/cache/yum/x86_64/7Server/','mode':'rw'}},detach=True,remove=False)
  print(" [x] %s" % container.id )
- #while(True):
-  #container.reload()
-  #if container.status == 'exited' :
-     #container.remove(force=True)
-     #break
+ while(True):
+  container.reload()
+  if container.status == 'exited' :
+     container.remove(force=True)
+     break
 
 
 def data_handler(ch, method, properties,body):

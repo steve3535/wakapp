@@ -1,0 +1,114 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: "{{ HOSTS }}"
+  vars:
+    - rh7scandir: "/home/wakausr/scan_results/rh7/{{ HOSTS }}"
+    - rh6scandir: "/home/wakausr/scan_results/rh6/{{ HOSTS }}"
+    - bindir: /home/wakausr/bin 
+  tasks:
+  - block:
+    - name: check setup flag file
+      stat:
+        path: /etc/ansible/facts.d/setuphost.fact
+      register: setup_flag_file
+    - name: check setup_flag
+      command: echo  "{{ ansible_local.setuphost.waka_setuphost }}"
+      register: setup_flag
+      when: setup_flag_file.stat.exists == true
+
+  - block:
+    - name: Scanning ...
+      shell: /home/wakausr/r7-ovalcmd
+      register: _scanel6
+      async: 1800
+      poll: 0
+
+    - name: Wait for scan to finish
+      async_status:
+        jid: "{{ _scanel6.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 20  # Check every 5 seconds.
+      retries: 30  # Retry up to 10 times. 
+
+    - name: Saving scan results ...
+      delegate_to: localhost
+      file:
+        path: "/home/wakausr/scan_results/rh6/{{ HOSTS }}"
+        state: directory
+        owner: wakausr
+    - name: fetching ...
+      fetch: 
+       src: "{{ item }}"
+       dest: "/home/wakausr/scan_results/rh6/{{ HOSTS }}/"
+       flat: yes
+      with_items:
+      - "/home/wakausr/resultat-{{ ansible_hostname }}.txt"
+      - "/home/wakausr/vstats-{{ ansible_hostname }}.txt" 
+    when:  ansible_distribution_major_version== "6" and setup_flag_file.stat.exists == true and setup_flag.stdout == "1"
+
+  - block: 
+    - name: Evaluation ...
+      shell: /home/wakausr/r7-ovalcmd
+      register: _scanr7
+      async: 1800
+      poll: 0
+    - name: Wait for Evaluation to end ...
+      async_status:
+        jid: "{{ _scanr7.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 20  # Check every 5 seconds.
+      retries: 30
+    - name: Compress
+      archive:
+        dest: "/home/wakausr/results-{{ ansible_hostname }}.tar.gz"
+        path: "/home/wakausr/results-{{ ansible_hostname }}.xml"
+        format: gz
+        force_archive: yes
+    - name: Create files 
+      delegate_to: localhost
+      file:
+        path: "/home/wakausr/scan_results/rh7/{{ HOSTS }}"
+        state: directory
+        owner: wakausr
+    - name: Fetch
+      fetch:
+       src: "{{ item }}"
+       dest: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/"
+       flat: yes
+      with_items:
+      - "/home/wakausr/results-{{ ansible_hostname }}.tar.gz"
+      - "/home/wakausr/pkgs-{{ ansible_hostname }}.txt"
+    - name: Unarchive 
+      delegate_to: localhost
+      unarchive:
+         remote_src: no
+         src: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/results-{{ ansible_hostname }}.tar.gz"
+         dest: "/home/wakausr/scan_results/rh7/{{ HOSTS }}/"
+    - name: Scanning ...
+      delegate_to: localhost
+      docker_container:
+        name: "scanner-{{ ansible_hostname }}"
+        image: docker.io/nigelfoster/scanner
+        state: started
+        detach: false
+        auto_remove: no
+        volumes:
+        - "{{ rh7scandir }}:/scandir"
+        command: ["{{ ansible_hostname }}","/scandir/results-{{ ansible_hostname }}.xml","/scandir/pkgs-{{ ansible_hostname }}.txt","/scandir/resultat-{{ ansible_hostname }}.txt","/scandir/deplist-{{ ansible_hostname }}.txt","/scandir/vstats-{{ ansible_hostname }}.txt","/scandir/yupdate-{{ ansible_hostname }}.sh","/scandir/report-{{ ansible_hostname }}"]
+      register: _scr7
+      async: 3600
+      poll: 0
+    - name: Wait for scan to end ...
+      delegate_to: localhost
+      async_status:
+        jid: "{{ _scr7.ansible_job_id }}"
+      register: _jobs
+      until: _jobs.finished
+      delay: 20  # Check every 5 seconds.
+      retries: 150
+         
+    when:  ansible_distribution_major_version== "7" and setup_flag_file.stat.exists and setup_flag.stdout == "1"
+...
+

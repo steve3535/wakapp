@@ -13,14 +13,15 @@ echo  -e "${YELLOW}[*] Harmonizing results files ...${NC}"
 
 if [ -d "$HOME/scan_results/rh7/$GROUP" ]; then
 	cd "$HOME"/scan_results/rh7/"$GROUP" || exit
-	if ls ./resultat*txt 1>/dev/null 2>&1; then
-		#awk '{if (!a[$0]i++) print}' ./resultat*txt >"$GROUP"_final
+	if ls ./resultat*txt &>/dev/null ; then
                 cat resultat*.txt | sort -u > "$GROUP"_final.txt 
 		tempfile=$(mktemp)
 		echo -e "${BLUE}[-] Pass 1 ...${NC}"
-		sudo repoquery -R --resolve --recursive --qf="%{name}" $(cat "$GROUP"_final.txt) 2>/dev/null | tee -a "$tempfile"
+		#sudo repoquery -R --resolve --recursive --qf="%{name}" $(cat "$GROUP"_final.txt) 2>/dev/null | tee -a "$tempfile"
+		cat deplist*.txt > "$tempfile"
+		
                 echo -e "${BLUE}[-] Pass 2 ...${NC}"
-		sudo yumdownloader --resolve $(cat "$GROUP"_final.txt)  --urls 2>/dev/null | egrep "installed|updated" | cut -d" " -f3 | cut -d"." -f1 | tee -a "$tempfile"
+		#sudo yumdownloader --resolve $(cat "$GROUP"_final.txt)  --urls 2>/dev/null | egrep "installed|updated" | cut -d" " -f3 | cut -d"." -f1 | tee -a "$tempfile"
                 echo -e "${GREEN}[+] Sorting ...${NC}"
 		sort -u "$tempfile" > "$GROUP"_pkgs.txt
         

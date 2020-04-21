@@ -53,7 +53,7 @@ while true;do
     echo -e "${GREEN}[*] Closing channels ...${NC}"                                                                        
     while read line;do
       echo "Socket shutdown ..." >> "$HOME"/bin/fetch_main.log 2>&1
-      docker run docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line" &>/dev/null
+      docker run --rm docker.io/rabbitmq:3-management rabbitmqadmin --host="$rabbit_ip" --username=guest --password=guest -q close connection name="$line" &>/dev/null
       done < "$HOME"/bin/worker_main_id
     echo         
     echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"

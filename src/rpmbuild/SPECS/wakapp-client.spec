@@ -20,14 +20,11 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-#mkdir -p %{buildroot}/usr/lib/wakapp
-#cp /root/rpmbuild/SOURCES/wakapp-client-1.0/install.sh %{buildroot}/usr/lib/wakapp
 mkdir -p %{buildroot}/etc/yum.repos.d
 cp /root/rpmbuild/SOURCES/wakapp-client-1.0/wakapp.repo %{buildroot}/etc/yum.repos.d/wakapp.repo
 
 %post
 /usr/bin/wakapp-client
-#/usr/lib/wakapp/install.sh
 
 %postun
 userdel -r wakausr >/dev/null 2>&1
@@ -38,7 +35,6 @@ rm -f /etc/sudoers.d/wakausr
 
 %files
 %{_bindir}/%{name}
-#/usr/lib/wakapp/install.sh
 /etc/yum.repos.d/wakapp.repo
 
 %changelog

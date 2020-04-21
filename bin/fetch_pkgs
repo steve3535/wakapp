@@ -7,30 +7,37 @@
   B_RED='\033[1;91m'
   BLUE='\033[0;94m'
 
-echo $(date) >> $HOME/bin/fetch_main.log
 group="$1"
+
+logfile="$HOME/messages/fetch_main_$group.log"
+echo $(date) > $logfile
 #Generate messages
 echo -e "${GREEN}[*] Generating messages ...${NC}"
+rm -f $HOME/messages/"$group"_* 2>/dev/null
+
+if [ ! -s $HOME/scan_results/rh7/"$group"/"$group"_pkgs.txt ];then
+ echo "There is no package to update"
+ exit 10
+fi
+
 split -l 5 $HOME/scan_results/rh7/"$group"/"$group"_pkgs.txt $HOME/messages/"$group"_ 
 
 #Start task                             
 $HOME/bin/redis-bash-cli set task_flag 1
 echo -e "${GREEN}[-] Submitting tasks ...${NC}"
 for req in $(ls $HOME/messages/"$group"_*);do  
-#for req in baobab glibc nmap;do  
-  python $HOME/bin/new_task.py $(cat "$req") | tee -a $HOME/bin/fetch_main.log 
+  python $HOME/bin/new_task.py $(cat "$req") | tee -a $logfile 
 
-  #python $HOME/bin/new_task.py "$req" | tee -a $HOME/bin/fetch_main.log 
 done                                    
-#$HOME/bin/redis-bash-cli set task_flag 0
 sleep 5
 
 #Start N workers
-echo -e "${GREEN}[-] Starting workers ...${NC}"
+echo -e "${GREEN}[-] Starting workers ...${NC}" | tee -a $logfile
 nw="$2"
 for i in $(seq 1 $nw);do
   python $HOME/bin/worker.py & 
 done
 
-
 $HOME/bin/redis-bash-cli set task_flag 0
+
+echo "=================================================" >> $logfile

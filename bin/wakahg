@@ -38,6 +38,17 @@
     fi
   }
 
+ check_h() {
+  #check existence of a host
+    HOST_NAME="$1"
+    grep -wq "$HOST_NAME" "$HOME"/inventory/*
+    if [ "$?" -eq 0 ]; then
+      return 0
+    else
+      return 1
+    fi
+  }
+
   verifygroup() {
   #run prereq test against a group
     GRP_NAME="$1"
@@ -254,18 +265,37 @@
   echo
   echo -e "${B_WHITE}SCANNING ...${NC}"
   echo
-  for i in "${@}"; do
-    check "$i"
-    if [[ "$?" -ne 0 ]];then
-      echo -e "error: ${RED}$i${NC} : group not found"
+
+  if [ "$1" == "-h" ];then
+   # we r dealing with a single host
+   if [ -z "$2" ];then
+    echo "No Host was specified ... Exiting ..."
+    exit 1
+   else
+    check_h "$2"
+    if [ "$?" -ne 0 ];then
+      echo -e "error: ${RED}$2${NC} : host not found"
       echo
     else
-      echo -e "${YELLOW}WARNING ${NC}Hosts within the group that were not setup will be skipped. To setup, run : waka hostgroup setup [GROUPNAME]"
-      $HOME/bin/scan_hosts -e HOSTS="$i" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/bin/harmo_results "$i" && echo "Logging stats ..." && $HOME/bin/log_stats &>"$LOGFILE"
-      $HOME/bin/pull_stats "$i"
+      echo -e "${YELLOW}WARNING ${NC}Host that was not setup will be skipped."
+      $HOME/bin/scan_hosts2 -e HOSTS="$2" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/bin/harmo_results "$2" && echo "Logging stats ..." && $HOME/bin/log_stats &>"$LOGFILE"
+      $HOME/bin/pull_stats "$2"
     fi
-  done
-    
+   fi
+  
+  else
+   for i in "${@}"; do
+     check "$i"
+     if [[ "$?" -ne 0 ]];then
+       echo -e "error: ${RED}$i${NC} : group not found"
+       echo
+     else
+       echo -e "${YELLOW}WARNING ${NC}Hosts within the group that were not setup will be skipped. To setup, run : waka hostgroup setup [GROUPNAME]"
+       $HOME/bin/scan_hosts2 -e HOSTS="$i" && echo -e "${B_WHITE}SCAN SUCCESSFULLY COMPLETED${NC}" && $HOME/bin/harmo_results "$i" && echo "Logging stats ..." && $HOME/bin/log_stats &>"$LOGFILE"
+       $HOME/bin/pull_stats "$i"
+     fi
+   done
+  fi  
  }
 
  patchgroup(){
@@ -274,14 +304,26 @@
      echo "error: $1 : group not found"
      exit 1
    else
-     nth=16
+     nth=8
      group="$1"
      echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
      $HOME/bin/fetch_pkgs "$group" "$nth"
+
+     if [ "$?" -eq 10 ];then
+      exit 0
+     fi
+
      sleep 5
      $HOME/bin/monitor_main_queue
      sleep 3
      echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
+     echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
+     sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7
+     sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream6
+     echo -e "${YELLOW}[x] Remove incompatiple platforms ...${NC}" 
+     sudo rm -f /var/cache/yum/x86_64/7Server/stream6/*el7*.rpm &>/dev/null
+     sudo rm -f /var/cache/yum/x86_64/7Server/stream7/*el6*.rpm &>/dev/null
+
      $HOME/bin/update_hosts -e HOSTS="$group"
    fi
    echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
