@@ -1,13 +1,5 @@
 #!/bin/bash
 
-  RED='\033[0;91m'
-  NC='\033[0m' # No Color
-  GREEN='\033[0;32m'
-  YELLOW='\033[0;93m'
-  B_WHITE='\033[0;37m'
-  B_RED='\033[1;91m'
-  BLUE='\033[0;94m'
-
 checkhost(){
 ok=0
 for i in `grep -v "^\[" $HOME/inventory/* | cut -d: -f2`;do
@@ -18,50 +10,10 @@ done
 return $ok
 }
 
-client_pkg_test() {
-    host="$1"
-    nc -z -w10 "$1" 22 >/dev/null 2>&1
-    ret="$?"
-    [[ "$ret" -ne 0 ]] && return 125 #host unreachable
-    ssh -o PasswordAuthentication=no -o StrictHostKeyChecking=no "$host" hostname >/dev/null 2>&1
-    ret="$?"
-    return "$ret"
-  }
 
 checkhost "$1"
 if [[ "$?" -eq 0 ]];then
   echo -e "\n$1: Host not found.\n"
 else
-  client_pkg_test "$1"
-  case "$?" in
-      0) ssh "$1" ls -l ~/report.html >/dev/null 2>&1
-         if [ "$?" -ne 0 ];then
-           echo "No scan report was found for $1"
-           exit 2
-         else
-           echo -e "${YELLOW}\nVulnerabilities Scan report for host $1${NC}\n"
-           vuln_count=`ssh "$1" curl -s file:///home/wakausr/report.html | grep -C3 -i true | grep -o 'CVE-[[:digit:]]\{4\}-[[:digit:]]\{4\}*' | sort -u | wc -l`
-           echo -e "${B_WHITE}$vuln_count${NC} distinct vulnerabilities found\n"
-	   
-	   if [[ "$vuln_count" -eq 0 ]];then
-		   exit 0
-	   fi
-
-           read -n 1 -r -s -p "Press any key to continue ..."
-           echo
-           ssh "$1" curl -s file:///home/wakausr/report.html | grep -C3 -i true | grep -o 'CVE-[[:digit:]]\{4\}-[[:digit:]]\{4\}*' | sort -r -u  
-           echo
-           read -n 1 -r -s -p "Press any key to continue ..."
-           echo
-           echo "Scan report being generated ..." && sleep 1
-           ssh "$1" curl -s file:///home/wakausr/report.html | grep -C3 -i true | grep -o 'CVE-[[:digit:]]\{4\}-[[:digit:]]\{4\}*' | sort -u | rhsecapi --stdin -f +cvss3 -t 20| less
-         fi
-         ;;
-    125) printf "%-32s${RED}%-32s${NC}\n" "$1 ........." "Connection timeout/Host unreachable"
-         ok=$(( ok - 1 ))
-         ;;
-    255) printf "%-32s${RED}%-32s${NC}\n" "$1 ........." "Authentication failure"
-         ok=$(( ok - 1 ))
-         ;;
-  esac
+  more "$HOME"/scan_results/*/*/report-"$1"
 fi

@@ -1,5 +1,18 @@
 #!/usr/bin/env ansible-playbook
 ---
+- hosts: localhost
+  tasks:
+  - name: refresh definition file for v7
+    get_url:
+       url: https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_7.xml
+       dest: /var/cache/yum/x86_64/7Server/stream7/
+       validate_certs: no
+  - name: refresh definition file for v6
+    get_url:
+       url: https://www.redhat.com/security/data/oval/Red_Hat_Enterprise_Linux_6.xml
+       dest: /var/cache/yum/x86_64/7Server/stream6/
+       validate_certs: no
+
 - hosts: "{{ HOSTS }}"
   vars:
     - rh7scandir: "/home/wakausr/scan_results/rh7/{{ HOSTS }}"
@@ -17,6 +30,14 @@
       when: setup_flag_file.stat.exists == true
 
   - block:
+    - name: download definition file
+      get_url:
+        url: http://{{ lookup('env','WAKA_SRVNAME') }}:8888/stream6/Red_Hat_Enterprise_Linux_6.xml
+        dest: /home/wakausr/Red_Hat_Enterprise_Linux_6.xml
+        force: yes
+        validate_certs: no
+        owner: wakausr
+
     - name: Scanning ...
       shell: /home/wakausr/r7-ovalcmd
       register: _scanel6
@@ -48,6 +69,14 @@
     when:  ansible_distribution_major_version== "6" and setup_flag_file.stat.exists == true and setup_flag.stdout == "1"
 
   - block: 
+    - name: download definition file
+      get_url:
+        url: http://{{ lookup('env','WAKA_SRVNAME') }}:8888/stream7/Red_Hat_Enterprise_Linux_7.xml
+        dest: /home/wakausr/Red_Hat_Enterprise_Linux_7.xml
+        force: yes
+        validate_certs: no
+        owner: wakausr
+
     - name: Evaluation ...
       shell: /home/wakausr/r7-ovalcmd
       register: _scanr7

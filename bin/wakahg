@@ -299,37 +299,73 @@
  }
 
  patchgroup(){
-   check "$1"
-   if [[ "$?" -ne 0 ]];then
-     echo "error: $1 : group not found"
-     exit 1
-   else
-     nth=8
-     group="$1"
-     echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
-     $HOME/bin/fetch_pkgs "$group" "$nth"
 
-     if [ "$?" -eq 10 ];then
-      exit 0
+   if [ "$1" == "-h" ];then
+     # we r dealing with a single host
+     if [ -z "$2" ];then
+       echo "No Host was specified ... Exiting ..."
+       exit 1
+     else
+       check_h "$2"
+       if [ "$?" -ne 0 ];then
+         echo -e "error: ${RED}$2${NC} : host not found"
+         echo
+       else
+         nth=4
+         group="$2"
+         echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
+         $HOME/bin/fetch_pkgs "$group" "$nth"
+         if [ "$?" -eq 10 ];then
+           exit 0
+         fi
+         sleep 5
+         $HOME/bin/monitor_main_queue
+         sleep 3
+         echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
+         echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
+         sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7
+         sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream6
+         echo -e "${YELLOW}[x] Remove incompatiple platforms ...${NC}" 
+         sudo rm -f /var/cache/yum/x86_64/7Server/stream6/*el7*.rpm &>/dev/null
+         sudo rm -f /var/cache/yum/x86_64/7Server/stream7/*el6*.rpm &>/dev/null
+         $HOME/bin/update_hosts -e HOSTS="$group"
+         echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
+         echo -e "\n${B_RED}[!] RESTART OF THE HOSTS MAY BE REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"
+         rm -f $HOME/messages/"$group"*
+       fi
      fi
+   else
+     check "$1"
+     if [[ "$?" -ne 0 ]];then
+       echo "error: $1 : group not found"
+       exit 1
+     else
+       nth=8
+       group="$1"
+       echo -e "\n${YELLOW}RETRIEVING UPDATES${NC}\n" 
+       $HOME/bin/fetch_pkgs "$group" "$nth"
 
-     sleep 5
-     $HOME/bin/monitor_main_queue
-     sleep 3
-     echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
-     echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
-     sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7
-     sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream6
-     echo -e "${YELLOW}[x] Remove incompatiple platforms ...${NC}" 
-     sudo rm -f /var/cache/yum/x86_64/7Server/stream6/*el7*.rpm &>/dev/null
-     sudo rm -f /var/cache/yum/x86_64/7Server/stream7/*el6*.rpm &>/dev/null
+       if [ "$?" -eq 10 ];then
+         exit 0
+       fi
 
-     $HOME/bin/update_hosts -e HOSTS="$group"
-   fi
-   echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
-   echo -e "\n${B_RED}[!] RESTART OF THE HOSTS IS REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"
-   rm -f $HOME/messages/"$group"*
-   
+       sleep 5
+       $HOME/bin/monitor_main_queue
+       sleep 3
+       echo -e "\n${YELLOW}APPLYING UPDATES${NC}\n" 
+       echo -e "${YELLOW}[*] Refreshing metadata ...${NC}"
+       sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream7
+       sudo createrepo  --update /var/cache/yum/x86_64/7Server/stream6
+       echo -e "${YELLOW}[x] Remove incompatiple platforms ...${NC}" 
+       sudo rm -f /var/cache/yum/x86_64/7Server/stream6/*el7*.rpm &>/dev/null
+       sudo rm -f /var/cache/yum/x86_64/7Server/stream7/*el6*.rpm &>/dev/null
+
+       $HOME/bin/update_hosts -e HOSTS="$group"
+     fi
+     echo -e "\n${GREEN}[+] UPDATE PROCESS COMPLETE - Rerun the Scan to confirm clearance ... ${NC}"
+     echo -e "\n${B_RED}[!] RESTART OF THE HOSTS MAY BE REQUIRED FOR ALL CHANGES TO TAKE EFFECT ${NC}"
+     rm -f $HOME/messages/"$group"*
+   fi 
    exit 0
  }
 
@@ -374,7 +410,7 @@
            scangroup "${@:2}"
            ;;
      "patch")
-           patchgroup "$2"
+           patchgroup "${@:2}"
            ;;
      
      esac
